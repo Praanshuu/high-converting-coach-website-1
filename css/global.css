@@ -1,0 +1,184 @@
+/* global.css - Design System Variables, Reset, and Utilities */
+
+/* 1. Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. CSS Variables (Design System tokens) */
+:root {
+    /* Colors */
+    --color-bg: #FFFFFF;
+    --color-bg-light: #F8F9FA;
+    --color-text: #121212;
+    --color-text-muted: #555555;
+    
+    /* Accents (Deep Blue / Green) */
+    --color-primary: #0F52BA; /* Deep Blue */
+    --color-primary-hover: #0B429A;
+    --color-accent: #00A36C; /* Green Alert/Accent */
+    --color-accent-light: #4ADE80;
+    
+    /* Dark Theme elements */
+    --color-dark: #1A1A1A;
+    
+    /* Typography */
+    --ff-primary: 'Inter', sans-serif;
+    
+    /* Font Sizes (Scale based on 16px) */
+    --fs-xs: 0.875rem;   /* 14px */
+    --fs-sm: 1rem;       /* 16px */
+    --fs-md: 1.125rem;   /* 18px */
+    --fs-lg: 1.5rem;     /* 24px */
+    --fs-xl: 2.25rem;    /* 36px */
+    --fs-xxl: 3rem;      /* 48px */
+    --fs-xxxl: 4rem;     /* 64px */
+    
+    /* Spacing (multiple of 4) */
+    --space-4: 0.25rem;  /* 4px */
+    --space-8: 0.5rem;   /* 8px */
+    --space-16: 1rem;    /* 16px */
+    --space-24: 1.5rem;  /* 24px */
+    --space-32: 2rem;    /* 32px */
+    --space-48: 3rem;    /* 48px */
+    --space-64: 4rem;    /* 64px */
+    --space-96: 6rem;    /* 96px */
+    --space-128: 8rem;   /* 128px */
+    
+    /* Shadows */
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    
+    /* Layout */
+    --container-max-width: 1200px;
+    --container-sm-width: 800px;
+}
+
+/* 3. Global Styles */
+html {
+    scroll-behavior: smooth;
+    font-size: 100%; /* 16px default */
+}
+
+body {
+    font-family: var(--ff-primary);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+    text-wrap: balance;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography elements */
+h1, h2, h3, h4 {
+    color: var(--color-text);
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: clamp(var(--fs-xxl), 5vw, var(--fs-xxxl));
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: clamp(var(--fs-xl), 4vw, var(--fs-xxl));
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: var(--fs-lg);
+}
+
+p {
+    margin-bottom: var(--space-16);
+    color: var(--color-text-muted);
+    font-size: var(--fs-md);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+/* 4. Utility Classes */
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-24);
+}
+
+.container-sm {
+    max-width: var(--container-sm-width);
+}
+
+/* Text Alignment */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Colors */
+.text-primary { color: var(--color-primary); }
+.text-accent { color: var(--color-accent); }
+.text-accent-light { color: var(--color-accent-light); }
+.text-white { color: var(--color-bg); }
+.text-dark { color: var(--color-dark); }
+.text-alert { color: var(--color-accent); } /* or red if needed, sticking to accent */
+
+/* Backgrounds */
+.bg-light { background-color: var(--color-bg-light); }
+.bg-dark { background-color: var(--color-dark); }
+.bg-white { background-color: var(--color-bg); }
+
+/* Spacing Helpers */
+.mt-8 { margin-top: var(--space-8); }
+.mt-16 { margin-top: var(--space-16); }
+.mt-32 { margin-top: var(--space-32); }
+.mt-64 { margin-top: var(--space-64); }
+.mb-8 { margin-bottom: var(--space-8); }
+.mb-16 { margin-bottom: var(--space-16); }
+.mb-32 { margin-bottom: var(--space-32); }
+.mb-64 { margin-bottom: var(--space-64); }
+
+.pl-1 { padding-left: var(--space-8); }
+.pl-2 { padding-left: var(--space-16); }
+.gap-16 { gap: var(--space-16); }
+.gap-32 { gap: var(--space-32); }
+.gap-64 { gap: var(--space-64); }
+
+/* Font styling */
+.font-bold { font-weight: 700; }
+.text-sm { font-size: var(--fs-xs); }
+.lead { font-size: var(--fs-lg); font-weight: 500; }
+.opacity-60 { opacity: 0.6; }
+.opacity-80 { opacity: 0.8; }
+
+/* Grid & Flex */
+.d-flex { 
+    display: flex; 
+}
+.align-center { 
+    align-items: center; 
+}
+.grid-2-cols {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+.grid-3-cols {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+    .grid-2-cols { grid-template-columns: repeat(2, 1fr); }
+    .grid-3-cols { grid-template-columns: repeat(3, 1fr); }
+}
