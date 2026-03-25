@@ -2,6 +2,18 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     
+    // 0. Navbar Scroll Effect (Glassmorphism transition)
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
+
     // 1. FAQ Accordion Logic
     const accordionItems = document.querySelectorAll('.accordion-item');
 
@@ -40,14 +52,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 3. Subtle Scroll Fade-in Animation (Intersection Observer)
-    const fadeElements = document.querySelectorAll('.section, .card');
+    const fadeElements = document.querySelectorAll('.fade-element, .card');
     
     // Initialize elements as hidden but smoothly transition when shown
     fadeElements.forEach(el => {
         // Prevent jarring transitions on immediate load by checking if it's already in viewport
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        // Preserve any inline delays
+        const delay = el.style.transitionDelay;
+        if(delay) {
+            el.style.transitionProperty = 'opacity, transform';
+        }
     });
 
     const observerOptions = {

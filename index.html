@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/global.css">
@@ -17,12 +17,16 @@
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="#" class="logo">Coach.</a>
+    <!-- Ambient Background Glows -->
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- Header Navigation (Glassmorphic) -->
+    <header class="site-header" id="navbar">
+        <div class="header-container">
+            <a href="#" class="logo text-gradient">Coach.</a>
             <nav class="main-nav">
-                <a href="#system" class="nav-link">The System</a>
+                <a href="#system" class="nav-link">System</a>
                 <a href="#proof" class="nav-link">Results</a>
                 <a href="#faq" class="nav-link">FAQ</a>
             </nav>
@@ -34,31 +38,34 @@
         <!-- 1. Hero Section -->
         <section id="hero" class="section hero-section">
             <div class="container text-center">
-                <h1 class="hero-title">
-                    Build a Predictable Client Flow — <br>
-                    <span class="text-accent">Without Referrals or Guesswork.</span>
+                <!-- <div class="badge fade-element">Version 2.0 Live</div> -->
+                <h1 class="hero-title fade-element" style="transition-delay: 100ms;">
+                    Build a Predictable Client Flow<br>
+                    <span class="font-serif">Without Referrals</span>
                 </h1>
-                <p class="hero-subtitle">
-                    A simple system to help you consistently attract and close clients — even if your current pipeline feels uncertain.
+                <p class="hero-subtitle fade-element" style="transition-delay: 200ms;">
+                    A simple, elite system to consistently attract and close high-ticket clients—even if your current pipeline feels uncertain.
                 </p>
-                <div class="hero-actions">
-                    <a href="#cta" class="btn btn-primary btn-lg">Book a Free Strategy Call &rarr;</a>
+                <div class="d-flex justify-center gap-16 mt-32 fade-element" style="transition-delay: 300ms;">
+                    <a href="#cta" class="btn btn-primary btn-lg">Book Strategy Call</a>
+                    <a href="#system" class="btn btn-outline btn-lg hide-mobile">Explore System</a>
                 </div>
             </div>
         </section>
 
-        <!-- 2. Problem Section -->
-        <section id="problem" class="section bg-light">
+        <!-- 2. Problem Section (Glass Panel) -->
+        <section id="problem" class="section">
             <div class="container container-sm">
-                <div class="card problem-card">
-                    <h2 class="section-title">If you're a freelancer, you've probably experienced this:</h2>
+                <div class="card problem-card fade-element">
+                    <div class="uppercase-tracked mb-16 text-center">The Problem</div>
+                    <h2 class="section-title mb-32 text-center text-white">If you're a freelancer, you've probably experienced this:</h2>
                     <ul class="bullet-list">
                         <li>Some months are great… others are absolutely dry.</li>
                         <li>You rely on referrals, but they’re completely unpredictable.</li>
                         <li>Outreach feels random, exhausting, and salesy.</li>
                         <li>You don’t have a clear system — just scattered efforts hoping something sticks.</li>
                     </ul>
-                    <p class="text-bold mt-32 text-center text-alert">
+                    <p class="font-bold mt-48 text-center text-primary" style="font-size: var(--fs-lg);">
                         Result: You’re working hard… but growth feels unstable.
                     </p>
                 </div>
@@ -67,93 +74,111 @@
 
         <!-- 3. Desired Outcome -->
         <section id="outcome" class="section">
-            <div class="container container-sm text-center">
-                <h2 class="section-title">Imagine instead...</h2>
-                <div class="outcome-grid mt-32">
-                    <div class="card outcome-card">
-                        <div class="icon">🎯</div>
-                        <p>You know exactly where your next clients are coming from.</p>
+            <div class="container text-center">
+                <h2 class="section-title text-gradient fade-element">Imagine instead...</h2>
+                <div class="outcome-grid mt-64">
+                    <div class="card outcome-card fade-element" style="transition-delay: 0ms;">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        </div>
+                        <p class="text-white font-bold mb-8">Absolute Certainty</p>
+                        <p class="text-sm">You know exactly where your next clients are coming from.</p>
                     </div>
-                    <div class="card outcome-card">
-                        <div class="icon">⚙️</div>
-                        <p>You have a clear, repeatable, and scalable system.</p>
+                    <div class="card outcome-card fade-element" style="transition-delay: 100ms;">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <p class="text-white font-bold mb-8">Scalable System</p>
+                        <p class="text-sm">You have a clear, repeatable, and automated pipeline.</p>
                     </div>
-                    <div class="card outcome-card">
-                        <div class="icon">🚀</div>
-                        <p>You’re no longer dependent on luck or referrals.</p>
+                    <div class="card outcome-card fade-element" style="transition-delay: 200ms;">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                        </div>
+                        <p class="text-white font-bold mb-8">High Velocity</p>
+                        <p class="text-sm">You’re no longer dependent on luck or random referrals.</p>
                     </div>
-                    <div class="card outcome-card">
-                        <div class="icon">✌️</div>
-                        <p>You can finally focus on doing the work you love — not chasing clients.</p>
+                    <div class="card outcome-card fade-element" style="transition-delay: 300ms;">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <p class="text-white font-bold mb-8">Deep Focus</p>
+                        <p class="text-sm">You can focus on doing the work you love — not chasing clients.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 4. Authority / Personal Brand -->
-        <section id="authority" class="section bg-dark text-white">
+        <section id="authority" class="section fade-element">
             <div class="container">
-                <div class="grid-2-cols align-center gap-64">
-                    <div class="authority-image-wrapper">
-                        <!-- Placeholder for face image to build trust -->
-                        <div class="image-placeholder">
-                            <span class="placeholder-text">Coach Profile Photo</span>
+                <div class="card p-0" style="padding: 0; background: transparent; border: none; box-shadow: none;">
+                    <div class="grid-2-cols align-center">
+                        <div class="authority-image-wrapper">
+                            <img src="images/coach.png" alt="Coach Portrait" class="coach-image">
                         </div>
-                    </div>
-                    <div class="authority-content">
-                        <h2 class="section-title text-left text-white">I was in the exact same place.</h2>
-                        <p class="mb-16">Inconsistent months, unclear strategy, and constant anxiety about my pipeline.</p>
-                        <p class="mb-16 lead text-accent-light">The problem wasn’t effort. It was the lack of a system.</p>
-                        <p>After years of trial and error, I discovered what actually moves the needle. Now, I help other freelancers fix their income roller-coaster with a highly structured, repeatable approach.</p>
+                        <div class="authority-content glass-panel" style="padding: var(--space-48); border: none; background: rgba(255,255,255,0.02)">
+                            <div class="uppercase-tracked mb-16">The Architect</div>
+                            <h2 class="section-title text-left mb-32">I was in the exact same place.</h2>
+                            <p class="lead mb-24 font-serif">Inconsistent months, unclear strategy, and constant anxiety about my pipeline.</p>
+                            <p class="mb-24">The problem wasn’t effort. It was the lack of a system. After years of trial and error, I discovered what actually moves the needle.</p>
+                            <p>Now, I help other freelancers fix their income roller-coaster with a highly structured, repeatable approach.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. Solution (Framework) -->
+        <!-- 5. Solution (Bento Grid) -->
         <section id="system" class="section">
-            <div class="container text-center">
-                <h2 class="section-title">The Predictable Client System</h2>
-                <p class="section-subtitle">No fluff. No random tactics. Just a reliable 3-step framework.</p>
+            <div class="container">
+                <div class="text-center mb-64 fade-element">
+                    <div class="badge">The Architecture</div>
+                    <h2 class="section-title">The Predictable <span class="font-serif">Client System</span></h2>
+                    <p class="section-subtitle">No fluff. No random tactics. Just a reliable 3-step framework.</p>
+                </div>
                 
-                <div class="grid-3-cols mt-64 gap-32">
-                    <div class="card step-card">
-                        <div class="step-number">1</div>
-                        <h3>Clarity</h3>
-                        <p>Define razor-sharp positioning and identify exactly who your ideal, high-paying clients are.</p>
+                <div class="grid-3-cols">
+                    <div class="card step-card fade-element" style="transition-delay: 0ms;">
+                        <div class="step-number">01</div>
+                        <h3 class="mb-16 text-white" style="margin-top:20px;">Clarity</h3>
+                        <p class="text-sm">Define razor-sharp positioning and identify exactly who your ideal, high-paying clients are.</p>
                     </div>
-                    <div class="card step-card">
-                        <div class="step-number">2</div>
-                        <h3>Attraction</h3>
-                        <p>Build a consistent inbound channel that brings ready-to-buy prospects to you.</p>
+                    <div class="card step-card fade-element" style="transition-delay: 100ms;">
+                        <div class="step-number">02</div>
+                        <h3 class="mb-16 text-white" style="margin-top:20px;">Attraction</h3>
+                        <p class="text-sm">Build a consistent inbound channel that brings ready-to-buy prospects directly to you.</p>
                     </div>
-                    <div class="card step-card">
-                        <div class="step-number">3</div>
-                        <h3>Conversion</h3>
-                        <p>Turn casual conversations and DMs into high-ticket clients without feeling "salesy".</p>
+                    <div class="card step-card fade-element" style="transition-delay: 200ms;">
+                        <div class="step-number">03</div>
+                        <h3 class="mb-16 text-white" style="margin-top:20px;">Conversion</h3>
+                        <p class="text-sm">Turn casual conversations and DMs into high-ticket clients without feeling "salesy".</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 6. Offer Section -->
-        <section id="offer" class="section bg-light">
+        <section id="offer" class="section fade-element">
             <div class="container">
-                <div class="grid-2-cols align-center gap-64">
-                    <div>
-                        <h2 class="section-title text-left">The 6-Week Accelerator</h2>
-                        <p class="mb-32">A personalized consulting program designed to install this system directly into your freelance business.</p>
-                        <ul class="check-list">
-                            <li><strong>1:1 Guidance:</strong> Weekly calls to strategize and unblock you.</li>
-                            <li><strong>Step-by-Step System:</strong> You get the exact playbooks and scripts.</li>
-                            <li><strong>Personalized Strategy:</strong> No cookie-cutter advice, tailored to your niche.</li>
-                            <li><strong>Feedback & Iteration:</strong> I review your assets and fine-tune your messaging.</li>
-                        </ul>
-                    </div>
-                    <div class="offer-box card">
-                        <h3>Ready to flip the switch?</h3>
-                        <p>Let's map out your transition from unpredictable gigs to a structured business.</p>
-                        <a href="#cta" class="btn btn-primary btn-block mt-32">Apply for Coaching</a>
+                <div class="glass-panel" style="padding: 0; overflow: hidden; border: var(--border-bright);">
+                    <div class="grid-2-cols" style="gap: 0;">
+                        <div style="padding: var(--space-64);">
+                            <div class="badge fade-element">Premium Access</div>
+                            <h2 class="section-title text-left mb-24 text-white">The 6-Week Accelerator</h2>
+                            <p class="mb-32">A personalized consulting program designed to install this system directly into your freelance business.</p>
+                            <ul class="check-list">
+                                <li><strong class="text-white">1:1 Guidance:</strong> Weekly strategic calls.</li>
+                                <li><strong class="text-white">Step-by-Step System:</strong> Playbooks and scripts.</li>
+                                <li><strong class="text-white">Personalized Strategy:</strong> Tailored to your niche.</li>
+                                <li><strong class="text-white">Feedback Loop:</strong> Direct review of your assets.</li>
+                            </ul>
+                        </div>
+                        <div class="offer-box d-flex flex-col justify-center align-center">
+                            <h3 class="mb-16 text-white">Ready to scale?</h3>
+                            <p class="mb-32 text-sm">Let's map out your transition from unpredictable gigs to a structured business engine.</p>
+                            <a href="#cta" class="btn btn-primary btn-lg">Apply for Coaching</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,26 +186,28 @@
 
         <!-- 7. Proof Section -->
         <section id="proof" class="section">
-            <div class="container">
-                <h2 class="section-title text-center">Don't just take my word for it.</h2>
-                <div class="grid-2-cols mt-64 gap-32">
-                    <div class="card testimonial-card">
-                        <p class="testimonial-quote">"I went from 1–2 random clients a month to a consistent, predictable pipeline in just 6 weeks. The Clarity phase changed everything for my business."</p>
+            <div class="container container-sm">
+                <div class="text-center mb-64 fade-element">
+                    <h2 class="section-title">Verified <span class="font-serif text-gradient">Results</span></h2>
+                </div>
+                <div class="d-flex flex-col gap-32">
+                    <div class="card testimonial-card fade-element" style="transition-delay: 0ms;">
+                        <p class="testimonial-quote">"I went from random clients to a consistent, predictable pipeline in just 6 weeks. The Clarity phase changed everything."</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar pl-1">S</div>
+                            <div class="author-avatar">S</div>
                             <div>
-                                <strong>Sarah J.</strong>
+                                <strong>Sarah Jenkins</strong>
                                 <span>UI/UX Designer</span>
                             </div>
                         </div>
                     </div>
-                    <div class="card testimonial-card">
-                        <p class="testimonial-quote">"Before this system, I was terrified of dry months. Now I have to turn work away because I'm booked out months in advance. Highest ROI investment ever."</p>
+                    <div class="card testimonial-card fade-element" style="transition-delay: 100ms;">
+                        <p class="testimonial-quote">"Before this system, I was terrified of dry months. Now I'm booked out months in advance. Highest ROI investment ever."</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar pl-2">M</div>
+                            <div class="author-avatar">M</div>
                             <div>
                                 <strong>Mark T.</strong>
-                                <span>Copywriter & Strategist</span>
+                                <span>Technical Copywriter</span>
                             </div>
                         </div>
                     </div>
@@ -188,48 +215,9 @@
             </div>
         </section>
 
-        <!-- 8. Objection Handling -->
-        <section id="objections" class="section bg-light">
-            <div class="container container-sm">
-                <h2 class="section-title text-center">Still unsure?</h2>
-                <div class="mt-64">
-                    <div class="objection-block mb-32 d-flex gap-16">
-                        <div class="icon text-primary font-bold">Q:</div>
-                        <div>
-                            <h3 class="mb-8">"What if I don't have a specific niche yet?"</h3>
-                            <p>That's exactly what step 1 (Clarity) solves. We will find the most profitable intersection of your skills and market demand together.</p>
-                        </div>
-                    </div>
-                    <div class="objection-block mb-32 d-flex gap-16">
-                        <div class="icon text-primary font-bold">Q:</div>
-                        <div>
-                            <h3 class="mb-8">"Will this work for my specific field?"</h3>
-                            <p>If you sell a high-value B2B service (design, code, writing, marketing), the fundamentals of attracting and converting clients remain the same. The system adapts to you.</p>
-                        </div>
-                    </div>
-                    <div class="objection-block d-flex gap-16">
-                        <div class="icon text-primary font-bold">Q:</div>
-                        <div>
-                            <h3 class="mb-8">"I've tried other strategies before..."</h3>
-                            <p>Most strategies fail because they are "random tactics". They tell you to post more on LinkedIn or cold email 100 people a day. This is a holistic, sustainable system—not a temporary hack.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 9. CTA Section -->
-        <section id="cta" class="section CTA-section bg-dark text-center">
-            <div class="container container-sm">
-                <h2 class="text-white mb-32">Stop guessing. Start building a predictable pipeline.</h2>
-                <a href="#booking" class="btn btn-primary btn-lg pulse-animation">Book Your Free Strategy Call</a>
-                <p class="text-white mt-16 opacity-80">No pressure. Just clarity on your exact next steps.</p>
-            </div>
-        </section>
-
-        <!-- 10. FAQ -->
+        <!-- 8. FAQ -->
         <section id="faq" class="section">
-            <div class="container container-sm">
+            <div class="container container-sm fade-element">
                 <h2 class="section-title text-center mb-64">Frequently Asked Questions</h2>
                 <div class="accordion-container">
                     <div class="accordion-item">
@@ -239,15 +227,6 @@
                         </button>
                         <div class="accordion-content">
                             <p>Experienced freelancers earning between ₹50k – ₹2L/month who feel stuck and want a predictable system to scale their income.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>Who is this NOT for?</span>
-                            <span class="icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Beginners with zero portfolio, anyone looking for an overnight "get rich quick" scheme, or those unwilling to put in the focused work to implement the system.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -271,18 +250,31 @@
                 </div>
             </div>
         </section>
+
+        <!-- 9. CTA Section -->
+        <section id="cta" class="section" style="padding-bottom: var(--space-128); padding-top: var(--space-128);">
+            <div class="container container-sm text-center">
+                <div class="glass-panel fade-element" style="padding: var(--space-64) var(--space-32); border: var(--border-bright); box-shadow: var(--glow-primary);">
+                    <h2 class="text-white mb-24" style="font-size: var(--fs-xl)">Stop guessing. Start building.</h2>
+                    <p class="mb-48 text-muted">Claim your predictable pipeline today.</p>
+                    <a href="#booking" class="btn btn-primary btn-lg" style="box-shadow: var(--glow-bright);">Book Your Free Strategy Call</a>
+                    <p class="text-sm text-muted mt-24">No pressure. Just clarity on your exact next steps.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- 11. Footer -->
-    <footer class="site-footer bg-light">
+    <!-- 10. Footer -->
+    <footer class="site-footer">
         <div class="container text-center">
-            <div class="footer-nav mb-32">
+            <div class="logo text-gradient mb-32" style="font-size: var(--fs-lg);">Coach.</div>
+            <div class="footer-nav mb-32 hide-mobile">
                 <a href="mailto:hello@example.com">Contact</a>
                 <a href="#">LinkedIn</a>
                 <a href="#">Twitter</a>
             </div>
-            <p class="opacity-60 text-sm">&copy; 2026 Predictable Client System. All rights reserved.</p>
-            <p class="opacity-60 text-sm mt-8">Designed for High-Performing Freelancers.</p>
+            <p class="text-sm text-muted mb-8">&copy; 2026 Predictable Client System. All rights reserved.</p>
+            <p class="text-sm text-muted opacity-60">Engineered for High-Performing Freelancers.</p>
         </div>
     </footer>
 
