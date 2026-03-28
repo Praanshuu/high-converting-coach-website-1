@@ -20,8 +20,8 @@
     
     /* Accents (Purple/Indigo gradients) */
     --color-accent-primary: #818cf8; /* Indigo-400 */
-    --color-accent-bright: #c084fc; /* Purple-400 */
-    --gradient-primary: linear-gradient(135deg, #4f46e5, #7c3aed); /* Deeper indigo→violet for contrast */
+    --color-accent-bright: #a5b4fc; /* Indigo-300 — Replaces purple for theme consistency */
+    --gradient-primary: linear-gradient(135deg, #4f46e5, #6366f1); /* More blue-indigo focus */
     --gradient-text: linear-gradient(to right, #ffffff, #94a3b8);
     
     /* Borders & Glass */
@@ -55,7 +55,7 @@
 
     /* Shadows & Glows */
     --glow-primary: 0 0 20px rgba(129, 140, 248, 0.3);
-    --glow-bright: 0 0 30px rgba(192, 132, 252, 0.4);
+    --glow-bright: 0 0 30px rgba(165, 180, 252, 0.4);
     --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4);
 
     /* Transitions */
@@ -114,7 +114,7 @@ body {
     right: -10%;
     width: 50vw;
     height: 50vw;
-    background: radial-gradient(circle, rgba(192,132,252,0.1) 0%, rgba(3,0,20,0) 70%);
+    background: radial-gradient(circle, rgba(129,140,248,0.08) 0%, rgba(3,0,20,0) 70%);
     border-radius: 50%;
     z-index: -1;
     pointer-events: none;
@@ -156,6 +156,18 @@ p {
     color: var(--color-accent-primary);
     letter-spacing: normal;
 }
+/* Brighter serif variant for use on dark/hero backgrounds — matches the primary brand blue/indigo with a subtle vertical gradient, lightened further for better highlight */
+.font-serif-bright {
+background: linear-gradient(
+  to bottom,
+  #c7d2fe,
+  #a5b4fc,
+  #818cf8,
+  #6366f1
+);    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
 .text-gradient {
     background: var(--gradient-text);
@@ -196,7 +208,13 @@ a {
 
 @media (min-width: 768px) {
     .container {
-        padding: 0 var(--space-24);
+        padding: 0 var(--space-32);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 var(--space-48);
     }
 }
 
@@ -264,7 +282,12 @@ a {
 }
 
 @media (min-width: 768px) {
-    .grid-2-cols { grid-template-columns: repeat(2, 1fr); gap: var(--space-64); }
+    .grid-2-cols { grid-template-columns: repeat(2, 1fr); gap: var(--space-48); }
+    .grid-3-cols { grid-template-columns: repeat(2, 1fr); gap: var(--space-32); }
+}
+
+@media (min-width: 1024px) {
+    .grid-2-cols { gap: var(--space-64); }
     .grid-3-cols { grid-template-columns: repeat(3, 1fr); gap: var(--space-32); }
 }
 
