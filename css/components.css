@@ -497,7 +497,7 @@
 
 /* Step Card Example Text */
 .step-example {
-    margin-top: var(--space-16);
+    margin-top: auto;
     padding: var(--space-12) var(--space-16);
     border-left: 2px solid rgba(129, 140, 248, 0.4);
     background: rgba(129, 140, 248, 0.05);
@@ -507,6 +507,35 @@
     line-height: 1.6;
     font-style: normal;
     font-family: var(--ff-primary);
+}
+
+/* Video Placeholder */
+.video-placeholder {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-16);
+    padding: var(--space-12) var(--space-20);
+    border: var(--border-bright);
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: background var(--transition-base), border-color var(--transition-base);
+    text-decoration: none;
+}
+.video-placeholder:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(129, 140, 248, 0.5);
+}
+.video-play-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 0 16px rgba(79, 70, 229, 0.5);
 }
 .authority-image-wrapper {
     position: relative;
@@ -533,6 +562,9 @@
 .step-card {
     padding-top: var(--space-48);
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 .step-number {
     position: absolute;
