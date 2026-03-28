@@ -13,6 +13,155 @@
     }
 }
 
+/* --- Proof Strip --- */
+.proof-strip {
+    padding: var(--space-16) 0;
+    border-top: var(--border-subtle);
+    border-bottom: var(--border-subtle);
+    background: rgba(129, 140, 248, 0.04);
+    position: relative;
+    z-index: 10;
+}
+.proof-strip-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-16);
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .proof-strip-inner {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0;
+        text-align: left;
+    }
+}
+.proof-strip-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+    padding: 0 var(--space-16);
+}
+@media (min-width: 768px) {
+    .proof-strip-item {
+        padding: 0 var(--space-32);
+    }
+}
+.proof-strip-icon {
+    color: var(--color-accent-primary);
+    font-size: 0.6rem;
+    flex-shrink: 0;
+}
+.proof-strip-divider {
+    display: none;
+    width: 1px;
+    height: 24px;
+    background: rgba(255,255,255,0.1);
+    flex-shrink: 0;
+}
+@media (min-width: 768px) {
+    .proof-strip-divider { display: block; }
+}
+
+/* --- Stuck Cards (Why They're Stuck) --- */
+.stuck-card {
+    background: rgba(255,255,255,0.02);
+    border: var(--border-subtle);
+    border-radius: 20px;
+    padding: var(--space-32) var(--space-24);
+    text-align: center;
+    transition: border-color var(--transition-base);
+    margin-top: var(--space-32);
+}
+@media (min-width: 768px) {
+    .stuck-card {
+        margin-top: 0;
+    }
+}
+.stuck-card:hover {
+    border-color: rgba(255,255,255,0.15);
+}
+.stuck-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-16);
+    display: block;
+}
+
+/* --- Timeline --- */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 76px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--color-accent-primary), transparent);
+}
+@media (min-width: 768px) {
+    .timeline::before { left: 100px; }
+}
+.timeline-item {
+    display: flex;
+    gap: var(--space-32);
+    padding-bottom: var(--space-48);
+    position: relative;
+}
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+.timeline-week {
+    flex-shrink: 0;
+    width: 68px;
+    font-size: var(--fs-xs);
+    font-weight: 800;
+    color: var(--color-accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    padding-top: 4px;
+    text-align: right;
+    position: relative;
+}
+.timeline-week::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent-primary);
+    box-shadow: 0 0 12px rgba(129,140,248,0.6);
+}
+@media (min-width: 768px) {
+    .timeline-week { width: 90px; }
+    .timeline-week::after { right: -28px; }
+}
+.timeline-card {
+    background: rgba(255,255,255,0.02);
+    border: var(--border-subtle);
+    border-radius: 16px;
+    padding: var(--space-24) var(--space-24);
+    flex: 1;
+    transition: border-color var(--transition-base);
+}
+.timeline-card:hover {
+    border-color: rgba(255,255,255,0.15);
+}
+
+
+
 .section-title {
     margin-bottom: var(--space-16);
 }
@@ -230,7 +379,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image:
+        linear-gradient(to bottom, rgba(3,0,20,0.55) 0%, rgba(3,0,20,0.8) 70%, rgba(3,0,20,1) 100%),
+        url('../images/hero-bg.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
 }
+
 
 .hero-title {
     margin-bottom: var(--space-32);
@@ -339,7 +495,19 @@
     border: 1px solid rgba(129, 140, 248, 0.2);
 }
 
-/* Authority */
+/* Step Card Example Text */
+.step-example {
+    margin-top: var(--space-16);
+    padding: var(--space-12) var(--space-16);
+    border-left: 2px solid rgba(129, 140, 248, 0.4);
+    background: rgba(129, 140, 248, 0.05);
+    border-radius: 0 8px 8px 0;
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    font-style: normal;
+    font-family: var(--ff-primary);
+}
 .authority-image-wrapper {
     position: relative;
     border-radius: 24px;
