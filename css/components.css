@@ -25,9 +25,9 @@
 .proof-strip-inner {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-16);
-    text-align: center;
+    text-align: left;
 }
 @media (min-width: 768px) {
     .proof-strip-inner {
@@ -39,11 +39,12 @@
 }
 .proof-strip-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-8);
     color: var(--color-text-muted);
     font-size: var(--fs-sm);
     padding: 0 var(--space-16);
+    text-align: left;
 }
 @media (min-width: 768px) {
     .proof-strip-item {
@@ -54,6 +55,7 @@
     color: var(--color-accent-primary);
     font-size: 0.6rem;
     flex-shrink: 0;
+    margin-top: 4px; /* visually align with first line */
 }
 .proof-strip-divider {
     display: none;
@@ -239,10 +241,10 @@
     text-align: center;
     border: none;
     font-family: inherit;
-    font-size: var(--fs-sm);
     transition: all var(--transition-base);
     text-decoration: none;
     line-height: 1;
+    white-space: nowrap;
 }
 
 @media (min-width: 768px) {
