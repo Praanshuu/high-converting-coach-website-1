@@ -232,7 +232,8 @@ a {
 .mb-16 { margin-bottom: var(--space-16); }
 .mb-32 { margin-bottom: var(--space-32); }
 .mb-64 { margin-bottom: var(--space-64); }
-
+.mt-48 { margin-top: var(--space-48); }
+.mb-48 { margin-top: var(--space-48); }
 .gap-16 { gap: var(--space-16); }
 .gap-32 { gap: var(--space-32); }
 .gap-64 { gap: var(--space-64); }

@@ -74,12 +74,6 @@
     padding: var(--space-32) var(--space-24);
     text-align: center;
     transition: border-color var(--transition-base);
-    margin-top: var(--space-32);
-}
-@media (min-width: 768px) {
-    .stuck-card {
-        margin-top: 0;
-    }
 }
 .stuck-card:hover {
     border-color: rgba(255,255,255,0.15);
