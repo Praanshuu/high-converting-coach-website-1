@@ -21,7 +21,7 @@
     /* Accents (Purple/Indigo gradients) */
     --color-accent-primary: #818cf8; /* Indigo-400 */
     --color-accent-bright: #c084fc; /* Purple-400 */
-    --gradient-primary: linear-gradient(135deg, #818cf8, #c084fc);
+    --gradient-primary: linear-gradient(135deg, #4f46e5, #7c3aed); /* Deeper indigo→violet for contrast */
     --gradient-text: linear-gradient(to right, #ffffff, #94a3b8);
     
     /* Borders & Glass */
@@ -34,14 +34,14 @@
     --ff-serif: 'Playfair Display', serif; /* For editorial accents */
     
     /* Font Sizes (Fluid Scale) */
-    --fs-xs: 0.875rem;
-    --fs-sm: 1rem;
-    --fs-md: 1.125rem;
-    --fs-lg: 1.5rem;
-    --fs-xl: clamp(2rem, 3vw, 2.5rem);
-    --fs-xxl: clamp(2.5rem, 5vw, 4rem);
-    --fs-xxxl: clamp(3.5rem, 7vw, 6rem); /* Massive hero */
-    
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-md: 1rem;
+    --fs-lg: 1.25rem;
+    --fs-xl: clamp(1.5rem, 3vw, 2.5rem);
+    --fs-xxl: clamp(2rem, 5vw, 4rem);
+    --fs-xxxl: clamp(2.5rem, 8vw, 6rem);
+
     /* Spacing */
     --space-4: 0.25rem;
     --space-8: 0.5rem;
@@ -52,20 +52,29 @@
     --space-64: 4rem;
     --space-96: 6rem;
     --space-128: 8rem;
-    
+
     /* Shadows & Glows */
     --glow-primary: 0 0 20px rgba(129, 140, 248, 0.3);
     --glow-bright: 0 0 30px rgba(192, 132, 252, 0.4);
     --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4);
-    
+
     /* Transitions */
     --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     /* Layout */
     --container-max-width: 1200px;
-    --container-sm-width: 768px; /* Narrower for editorial reading */
+    --container-sm-width: 768px;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --fs-xs: 0.875rem;
+        --fs-sm: 1rem;
+        --fs-md: 1.125rem;
+        --fs-lg: 1.5rem;
+    }
 }
 
 /* 3. Global Styles */
@@ -181,8 +190,14 @@ a {
     width: 100%;
     max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: 0 var(--space-24);
+    padding: 0 var(--space-16);
     position: relative; /* For z-indexing above glows */
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--space-24);
+    }
 }
 
 .container-sm {
