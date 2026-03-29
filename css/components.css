@@ -30,9 +30,10 @@
 .proof-strip-inner {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;   
     gap: var(--space-16);
-    text-align: center;
+    text-align: left;          
+    padding: 0 var(--space-16);
 }
 @media (min-width: 768px) {
     .proof-strip-inner {
@@ -44,7 +45,7 @@
 }
 .proof-strip-item {
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: var(--space-8);
     color: var(--color-text-muted);
     font-size: var(--fs-sm);
@@ -575,6 +576,12 @@
     flex-shrink: 0;
     box-shadow: 0 0 16px rgba(79, 70, 229, 0.5);
 }
+.video_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-8) 0;
+}
 /* Video placeholder text block */
 .video-placeholder-text {
     display: flex;
@@ -599,6 +606,11 @@
     background: var(--gradient-primary); /* Gradient border wrapper */
     overflow: hidden;
 }
+
+#authority-content {
+    padding: var(--space-24)
+}
+
 .coach-image {
     width: 100%;
     height: 100%;
