@@ -54,14 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. Subtle Scroll Fade-in Animation (Intersection Observer)
     const fadeElements = document.querySelectorAll('.fade-element, .card');
     
-    // Initialize elements as hidden but smoothly transition when shown
     fadeElements.forEach(el => {
-        // Prevent jarring transitions on immediate load by checking if it's already in viewport
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
         
-        // Preserve any inline delays
         const delay = el.style.transitionDelay;
         if(delay) {
             el.style.transitionProperty = 'opacity, transform';
@@ -80,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const el = entry.target;
                 el.style.opacity = '1';
                 el.style.transform = 'translateY(0)';
-                // Once triggered, unobserve to prevent re-animating on scroll up
                 observer.unobserve(el);
             }
         });
@@ -89,4 +85,5 @@ document.addEventListener("DOMContentLoaded", () => {
     fadeElements.forEach(el => {
         observer.observe(el);
     });
+
 });

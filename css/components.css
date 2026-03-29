@@ -379,6 +379,7 @@
 
 /* Hero */
 .hero-section {
+    position: relative;
     padding-top: var(--space-128);
     padding-bottom: var(--space-64);
     min-height: 100svh;
@@ -393,7 +394,51 @@
     background-repeat: no-repeat;
 }
 
+/* Refined Scroll Indicator (Global) */
+.scroll-arrow {
+    display: block;
+    position: absolute;
+    bottom: var(--space-48);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-decoration: none;
+    animation: bounce 2s infinite ease-in-out;
+}
 
+.scroll-arrow-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(129, 140, 248, 0.1);
+    border: 1px solid rgba(129, 140, 248, 0.3);
+    color: var(--color-accent-primary);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.2);
+}
+
+.scroll-arrow-icon:hover {
+    background: rgba(129, 140, 248, 0.2);
+    border-color: rgba(129, 140, 248, 0.5);
+    transform: scale(1.05);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-4px);
+    }
+}
 .hero-title {
     margin-bottom: var(--space-32);
     max-width: 900px;
