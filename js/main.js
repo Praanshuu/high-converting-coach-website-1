@@ -86,4 +86,59 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(el);
     });
 
+    // 4. Video Modal Logic
+    const videoModal = document.getElementById('videoModal');
+    const modalTrigger = document.querySelector('.video-modal-trigger');
+    const closeModalBtn = document.getElementById('closeModal');
+    const videoWrapper = document.querySelector('.modal-video-wrapper');
+
+    if (modalTrigger && videoModal) {
+        modalTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const videoUrl = modalTrigger.getAttribute('href');
+            
+            // Inject iframe
+            videoWrapper.innerHTML = `
+                <iframe 
+                    src="${videoUrl}?autoplay=1" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            `;
+            
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+
+        const closeModal = () => {
+            videoModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+            
+            // Remove iframe after transition to stop video
+            setTimeout(() => {
+                videoWrapper.innerHTML = '';
+            }, 300);
+        };
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+        
+        // Close on clicking overlay
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
+
 });
