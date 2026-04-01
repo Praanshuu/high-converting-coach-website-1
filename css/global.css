@@ -95,6 +95,25 @@ body {
     overflow-x: hidden;
 }
 
+/* Ambient Layer */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50vh; left: -50vw; right: -50vw; bottom: -50vh;
+    background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='400' cy='400' r='350' stroke='rgba(129,140,248,0.08)' stroke-width='2' stroke-dasharray='12 30'/%3E%3Ccircle cx='400' cy='400' r='250' stroke='rgba(129,140,248,0.05)' stroke-width='1.5' stroke-dasharray='6 24'/%3E%3Ccircle cx='400' cy='400' r='150' stroke='rgba(129,140,248,0.03)' stroke-width='1' stroke-dasharray='2 10'/%3E%3Cpath d='M400 0 L400 800 M0 400 L800 400 M117 117 L683 683 M117 683 L683 117' stroke='rgba(129,140,248,0.02)' stroke-width='1'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 130vmax;
+    z-index: -3;
+    animation: slow-spin 150s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes slow-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 /* Background effects */
 .bg-glow {
     position: fixed;
