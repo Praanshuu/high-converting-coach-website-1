@@ -14,6 +14,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // 0.5 Hero Cursor-Tracking Glow
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+        const cursor_glow = document.createElement('div');
+        cursor_glow.style.cssText = `
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(129,140,248,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1), top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 0;
+            will-change: left, top;
+        `;
+        heroSection.appendChild(cursor_glow);
+
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            cursor_glow.style.left = (e.clientX - rect.left) + 'px';
+            cursor_glow.style.top = (e.clientY - rect.top) + 'px';
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            cursor_glow.style.left = '50%';
+            cursor_glow.style.top = '50%';
+        });
+    }
+
     // 1. FAQ Accordion Logic
     const accordionItems = document.querySelectorAll('.accordion-item');
 

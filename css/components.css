@@ -89,7 +89,7 @@
 .stuck-icon {
     font-size: 2rem;
     margin-bottom: var(--space-16);
-    display: block;
+    display: inline-block;
 }
 
 /* Balanced text constraints for stuck cards */
@@ -325,10 +325,16 @@
 .btn-primary {
     background: var(--gradient-primary);
     color: #fff;
-    box-shadow: var(--glow-primary);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
     position: relative;
     overflow: hidden;
     z-index: 1;
+    animation: btn-breathe 4s ease-in-out infinite alternate;
+}
+
+@keyframes btn-breathe {
+    0% { box-shadow: 0 0 16px rgba(79, 70, 229, 0.35); }
+    100% { box-shadow: 0 0 32px rgba(129, 140, 248, 0.65); }
 }
 
 .btn-primary::before {
@@ -397,6 +403,39 @@
     transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
+
+/* Shimmer sweep on glass cards */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.03) 50%,
+        transparent 70%
+    );
+    animation: card-shimmer 6s ease-in-out infinite;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes card-shimmer {
+    0% { left: -100%; opacity: 0; }
+    10% { opacity: 1; }
+    50% { left: 130%; opacity: 1; }
+    51% { opacity: 0; }
+    100% { left: 130%; opacity: 0; }
+}
+
+/* Stagger shimmer so cards don't sweep simultaneously */
+.card:nth-child(2)::before { animation-delay: 2s; }
+.card:nth-child(3)::before { animation-delay: 4s; }
+.card:nth-child(4)::before { animation-delay: 6s; }
 
 /* Badge / Pill Label */
 .badge {
@@ -619,6 +658,13 @@
     border-color: rgba(129, 140, 248, 0.4);
 }
 
+.outcome-card .icon-wrapper svg {
+    animation: icon-float 4s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+.outcome-card:nth-child(even) .icon-wrapper svg {
+    animation-delay: 2s;
+}
+
 .outcome-card .icon-wrapper svg path,
 .outcome-card .icon-wrapper svg circle {
     stroke-dasharray: 100;
@@ -634,6 +680,11 @@
 @keyframes svg-draw {
     0% { stroke-dashoffset: -100; }
     100% { stroke-dashoffset: 0; }
+}
+
+@keyframes icon-float {
+    0% { transform: translateY(1.5px); }
+    100% { transform: translateY(-1.5px); }
 }
 
 /* Step Card Example Text */
