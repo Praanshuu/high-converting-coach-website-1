@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Build a Predictable Client Flow Without Referrals or Guesswork. A simple system to help freelancers attract and close clients consistently.">
+        
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adrianmercer.com/">
+    <meta property="og:title" content="Adrian Mercer | Client Acquisition Coach">
+    <meta property="og:description" content="Build a Predictable Client Flow Without Referrals or Guesswork. A simple system to help freelancers attract and close clients consistently.">
+    <!-- Replace with your actual deployed OG image URL -->
+    <meta property="og:image" content="https://adrianmercer.com/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://adrianmercer.com/">
+    <meta property="twitter:title" content="Adrian Mercer | Client Acquisition Coach">
+    <meta property="twitter:description" content="Build a Predictable Client Flow Without Referrals or Guesswork. A simple system to help freelancers attract and close clients consistently.">
+    <meta property="twitter:image" content="https://adrianmercer.com/images/og-image.jpg">
+
     <title>Adrian Mercer | Client Acquisition Coach</title>
 
     <!-- Google Fonts -->
@@ -32,7 +48,8 @@
             <a href="#" class="logo text-gradient">Adrian Mercer.</a>
             <nav class="main-nav">
                 <a href="#system" class="nav-link">System</a>
-                <a href="#proof" class="nav-link">Results</a>
+                <a href="#offer" class="nav-link">Program</a>
+                <a href="#results" class="nav-link">Results</a>
                 <a href="#faq" class="nav-link">FAQ</a>
             </nav>
             <a href="#cta" class="btn btn-primary btn-sm">Let's Talk</a>
@@ -56,7 +73,7 @@
                 </div>
             </div>
             <!-- Refined Scroll Indicator for Mobile -->
-            <a href="#proof" class="scroll-arrow fade-element" aria-label="Scroll to next section"
+            <a href="#snapshot" class="scroll-arrow fade-element" aria-label="Scroll to next section"
                 style="transition-delay: 800ms;">
                 <div class="scroll-arrow-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -68,7 +85,7 @@
         </section>
 
         <!-- 1.5 Proof Snapshot Strip -->
-        <section id="proof" class="proof-strip fade-element">
+        <section id="snapshot" class="proof-strip fade-element">
             <div class="container">
                 <div class="uppercase-tracked mb-16 text-center">At a Glance</div>
                 <div class="proof-strip-inner">
@@ -214,7 +231,7 @@
                             <p class="mb-32">Now, I help other freelancers fix their income roller-coaster with a highly
                                 structured, repeatable approach.</p>
                             <div class="video_box">
-                                <a href="https://www.youtube.com/embed/dQw4w9WgXcQ" class="video-placeholder video-modal-trigger" aria-label="Watch Adrian's intro video"
+                                <a href="https://www.youtube.com/embed/_4pbmirYdOk?si=CjI0wCyoNxdco_Tx" class="video-placeholder video-modal-trigger" aria-label="Watch Adrian's intro video"
                                     style="padding: 12px 12px;">
                                     <div class="video-play-btn">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -343,7 +360,7 @@
         </section>
 
         <!-- 7. Proof Section -->
-        <section id="proof" class="section">
+        <section id="results" class="section">
             <div class="container container-sm">
                 <div class="text-center mb-64 fade-element">
                     <h2 class="section-title">Verified <span class="font-serif">Results</span></h2>
@@ -458,9 +475,35 @@
                     <p class="text-muted mb-48"
                         style="font-size: var(--fs-md); max-width: 420px; margin-left: auto; margin-right: auto;">No
                         more scattered efforts. One clear call to claim your predictable pipeline.</p>
-                    <a href="#booking" class="btn btn-primary btn-lg">Book Your Free Strategy Call</a>
-                    <p class="text-sm text-muted mt-32" style="opacity: 0.9;">No pressure. Just clarity on your exact
+                    <a href="#booking" class="btn btn-primary btn-lg booking-modal-trigger">Book Your Free Strategy Call</a>
+                    <p class="text-sm text-muted mt-16" style="opacity: 0.9;">No pressure. Just clarity on your exact
                         next steps.</p>
+
+                    <!-- What happens after booking -->
+                    <div class="next-steps-module mt-48 text-left">
+                        <h4 class="text-white mb-32 text-center" style="font-size: var(--fs-lg);">What happens after you book?</h4>
+                        <div class="next-step-item">
+                            <div class="step-indicator">1</div>
+                            <div>
+                                <strong class="text-white">Fill out a quick pulse-check</strong>
+                                <p class="text-muted text-sm m-0">A 2-minute form to help me understand your current bottleneck.</p>
+                            </div>
+                        </div>
+                        <div class="next-step-item mt-24">
+                            <div class="step-indicator">2</div>
+                            <div>
+                                <strong class="text-white">We map your transition on the call</strong>
+                                <p class="text-muted text-sm m-0">We’ll look at your pipeline and outline the exact inbound framework to implement.</p>
+                            </div>
+                        </div>
+                        <div class="next-step-item mt-24">
+                            <div class="step-indicator">3</div>
+                            <div>
+                                <strong class="text-white">You get the roadmap (no pressure)</strong>
+                                <p class="text-muted text-sm m-0">If we're a fit to work together, we'll discuss it. If not, you still walk away with a custom action plan.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -493,6 +536,24 @@
             </button>
             <div class="modal-video-wrapper">
                 <!-- Video iframe will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-container" style="max-width: 500px; padding: 0; background: transparent;">
+            <button class="modal-close" id="closeBookingModal" aria-label="Close modal" style="top: -40px; right: 0;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-booking-wrapper" style="width: 100%; height: 650px; background: rgba(10, 10, 15, 0.98); border: var(--border-bright); border-radius: 24px; overflow: hidden; position: relative;">
+                <!-- Calendly inline widget begin -->
+                <div class="calendly-inline-widget" data-url="https://calendly.com/your-calendly-link?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0f&text_color=ffffff&primary_color=818cf8" style="min-width:320px;height:100%;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                <!-- Calendly inline widget end -->
             </div>
         </div>
     </div>

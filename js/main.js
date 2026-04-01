@@ -141,4 +141,72 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // 5. Booking Modal Logic
+    const bookingModal = document.getElementById('bookingModal');
+    const bookingTriggers = document.querySelectorAll('.booking-modal-trigger');
+    const closeBookingBtn = document.getElementById('closeBookingModal');
+
+    if (bookingModal) {
+        const openBookingModal = (e) => {
+            if (e) e.preventDefault();
+            bookingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeBookingModal = () => {
+            bookingModal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        bookingTriggers.forEach(trigger => {
+            trigger.addEventListener('click', openBookingModal);
+        });
+
+        if (closeBookingBtn) {
+            closeBookingBtn.addEventListener('click', closeBookingModal);
+        }
+
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                closeBookingModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && bookingModal.classList.contains('active')) {
+                closeBookingModal();
+            }
+        });
+    }
+
+    // 6. ScrollSpy for Active Navigation Links
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    if (sections.length > 0 && navLinks.length > 0) {
+        const scrollSpyOptions = {
+            root: null,
+            rootMargin: '-40% 0px -60% 0px',
+            threshold: 0
+        };
+
+        const scrollSpyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, scrollSpyOptions);
+
+        sections.forEach(section => {
+            scrollSpyObserver.observe(section);
+        });
+    }
+
 });

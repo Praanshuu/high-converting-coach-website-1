@@ -249,10 +249,28 @@
     font-size: var(--fs-sm);
     font-weight: 500;
     transition: color var(--transition-fast);
+    position: relative;
 }
 
 .nav-link:hover {
     color: var(--color-text);
+}
+
+.nav-link.active {
+    color: #fff;
+    font-weight: 700;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-accent-primary);
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(129, 140, 248, 0.6);
 }
 
 @media (min-width: 768px) {
@@ -661,17 +679,20 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+    text-align: left;
 }
 .video-title {
     font-size: var(--fs-sm);
     font-weight: 700;
     color: var(--color-text);
     line-height: 1.3;
+    text-wrap: balance;
 }
 .video-meta {
     font-size: var(--fs-xs);
     color: var(--color-text-muted);
     line-height: 1.3;
+    text-wrap: balance;
 }
 .authority-image-wrapper {
     position: relative;
@@ -842,7 +863,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-32) 0;
+    padding: var(--space-24) 0;
+    gap: var(--space-16);
     background: none;
     border: none;
     font-size: var(--fs-md);
@@ -854,6 +876,11 @@
     text-align: left;
     transition: color var(--transition-fast);
 }
+@media (min-width: 768px) {
+    .accordion-header {
+        padding: var(--space-32) 0;
+    }
+}
 .accordion-header:hover {
     color: var(--color-accent-primary);
 }
@@ -863,8 +890,13 @@
     transition: max-height var(--transition-slow);
 }
 .accordion-content p {
-    padding-bottom: var(--space-32);
+    padding-bottom: var(--space-24);
     color: var(--color-text-muted);
+}
+@media (min-width: 768px) {
+    .accordion-content p {
+        padding-bottom: var(--space-32);
+    }
 }
 .accordion-item.active .accordion-content {
     max-height: 500px;
@@ -1015,6 +1047,39 @@
     align-items: center;
     justify-content: center;
     transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+/* --- Next Steps Module --- */
+.next-steps-module {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.02);
+    border: var(--border-subtle);
+    border-radius: 24px;
+    padding: var(--space-32);
+}
+
+.next-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-16);
+}
+
+.step-indicator {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: rgba(129, 140, 248, 0.15);
+    color: var(--color-accent-primary);
+    font-size: var(--fs-xs);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(129, 140, 248, 0.3);
+    margin-top: 2px;
 }
 
 .modal-close:hover {
