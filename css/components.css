@@ -78,38 +78,125 @@
 .stuck-card {
     background: rgba(255,255,255,0.02);
     border: var(--border-subtle);
-    border-radius: 20px;
-    padding: var(--space-32) var(--space-24);
+    border-radius: 24px; /* Matches outcome-card radius */
+    padding: var(--space-24) var(--space-16);
+    min-height: 220px;
     text-align: center;
-    transition: border-color var(--transition-base);
-}
-.stuck-card:hover {
-    border-color: rgba(255,255,255,0.15);
-}
-.stuck-icon {
-    font-size: 2rem;
-    margin-bottom: var(--space-16);
-    display: inline-block;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Balanced text constraints for stuck cards */
-.stuck-card h4 {
-    text-wrap: balance;
-    min-height: 2.6em; /* Reserves exactly 2 lines at 1.3 line-height */
+@media (min-width: 768px) {
+    .stuck-card {
+        padding: var(--space-32) var(--space-24);
+        min-height: 260px;
+    }
+}
+
+.stuck-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05); /* Added subtle background shift */
+    transform: translateY(-4px); /* Consistent hover lift */
+}
+
+.stuck-icon {
+    width: 64px; /* Matched to outcome icon-wrapper size */
+    height: 64px;
+    margin-bottom: var(--space-24); /* More generous spacing like outcome */
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1.3;
+    border-radius: 50%;
+    background: rgba(129, 140, 248, 0.1);
+    border: 1px solid rgba(129, 140, 248, 0.2);
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
 }
 
-.stuck-card p {
+.stuck-card:hover .stuck-icon {
+    transform: scale(1.1);
+}
+
+/* Animated SVG base */
+.stuck-svg {
+    width: 24px;
+    height: 24px;
+    color: var(--color-accent-primary);
+    display: block;
+    overflow: visible;
+}
+
+/* --- Stuck Icon Animations --- */
+
+/* 1. Ghost user fades in/out — referral unpredictability */
+.stuck-ghost-user {
+    animation: stuck-ghost 3.2s ease-in-out infinite;
+    transform-origin: center;
+}
+@keyframes stuck-ghost {
+    0%, 100% { opacity: 1; }
+    40%, 60% { opacity: 0.08; }
+}
+
+/* 2. Envelope shake — futile cold outreach */
+.stuck-anim-shake {
+    animation: stuck-shake 3.5s ease-in-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+@keyframes stuck-shake {
+    0%, 55%, 100% { transform: translateX(0) rotate(0deg); }
+    60%  { transform: translateX(-4px) rotate(-5deg); }
+    65%  { transform: translateX( 4px) rotate( 5deg); }
+    70%  { transform: translateX(-3px) rotate(-3deg); }
+    75%  { transform: translateX( 3px) rotate( 3deg); }
+    80%  { transform: translateX(-1px) rotate(-1deg); }
+    85%  { transform: translateX(0)    rotate(0deg); }
+}
+
+/* 3. Activity line self-draws then resets — erratic inconsistency */
+.stuck-draw-line {
+    stroke-dasharray: 70;
+    stroke-dashoffset: 70;
+    animation: stuck-draw 3s ease-in-out infinite;
+}
+@keyframes stuck-draw {
+    0%  { stroke-dashoffset: 70; opacity: 0; }
+    8%  { opacity: 1; }
+    65% { stroke-dashoffset: 0; opacity: 1; }
+    85% { stroke-dashoffset: 0; opacity: 0.2; }
+    100%{ stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* Balanced text constraints for stuck cards — using outcome logic */
+.stuck-heading {
+    color: var(--color-text);
+    font-weight: 800;
+    font-size: var(--fs-md); /* Slightly larger for stuck cards */
+    margin-bottom: var(--space-8);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-align: center;
     text-wrap: balance;
-    min-height: 4.8em; /* Reserves space for 3 lines at 1.6 line-height */
+    min-height: 2.6em; /* Reserves exactly 2 lines */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stuck-body {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.6;
+    text-align: center;
+    text-wrap: balance;
+    min-height: 4.8em; /* Reserves exactly 3 lines */
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    line-height: 1.6;
-    margin: 0;
 }
 
 /* --- Timeline --- */
@@ -404,38 +491,45 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
-/* Shimmer sweep on glass cards */
+/* Shimmer sweep on glass cards — relay: only 1 card shines at a time */
+/*
+ * Strategy: total cycle = 3s active sweep + 9s idle = 12s per card.
+ * Each nth card is offset by 3s so the next starts exactly when the previous ends.
+ * left starts at -60% (the width of the pseudo-element) so the leading
+ * edge of the shine begins right at the card's left border — no pop-in.
+ */
 .card::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: -60%;
     width: 60%;
     height: 100%;
     background: linear-gradient(
         105deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.03) 50%,
-        transparent 70%
+        transparent 20%,
+        rgba(255, 255, 255, 0.028) 50%,
+        transparent 80%
     );
-    animation: card-shimmer 6s ease-in-out infinite;
+    animation: card-shimmer 12s ease-in-out infinite;
     border-radius: inherit;
     pointer-events: none;
     z-index: 1;
 }
 
 @keyframes card-shimmer {
-    0% { left: -100%; opacity: 0; }
-    10% { opacity: 1; }
-    50% { left: 130%; opacity: 1; }
-    51% { opacity: 0; }
-    100% { left: 130%; opacity: 0; }
+    0%   { left: -60%; opacity: 0; }
+    2%   { opacity: 1; }
+    25%  { left: 110%; opacity: 1; }
+    26%  { opacity: 0; left: 110%; }
+    100% { left: 110%; opacity: 0; }
 }
 
-/* Stagger shimmer so cards don't sweep simultaneously */
-.card:nth-child(2)::before { animation-delay: 2s; }
-.card:nth-child(3)::before { animation-delay: 4s; }
-.card:nth-child(4)::before { animation-delay: 6s; }
+/* Relay: each card waits 3s after the previous finishes its sweep */
+.card:nth-child(1)::before { animation-delay: 0s; }
+.card:nth-child(2)::before { animation-delay: 3s; }
+.card:nth-child(3)::before { animation-delay: 6s; }
+.card:nth-child(4)::before { animation-delay: 9s; }
 
 /* Badge / Pill Label */
 .badge {
@@ -831,15 +925,15 @@
 
 /* System Cards (Bento style) */
 .step-card {
-    padding-top: var(--space-48);
-    overflow: visible;
+    /* overflow: hidden inherited from .card keeps shimmer clipped inside bounds */
+    padding-top: var(--space-64); /* extra room so the pill sits visually at the top */
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 .step-number {
     position: absolute;
-    top: -20px; /* Overhanging pill */
+    top: 24px; /* inside card — no overflow needed */
     left: var(--space-32);
     padding: var(--space-8) var(--space-24);
     background: var(--color-bg);
@@ -852,6 +946,11 @@
     font-size: var(--fs-md);
     font-weight: 800;
 }
+
+/* Step-card shimmer relay — 3 cards, 9s cycle, 3s sweep each — seamless with no gap */
+.step-card:nth-child(1)::before { animation-delay: 0s;  animation-duration: 9s; }
+.step-card:nth-child(2)::before { animation-delay: 3s;  animation-duration: 9s; }
+.step-card:nth-child(3)::before { animation-delay: 6s;  animation-duration: 9s; }
 
 /* Offer */
 .offer-panel {
@@ -915,16 +1014,28 @@
 .testimonial-card {
     position: relative;
 }
+/*
+ * .card::before runs the shimmer animation — but testimonial cards
+ * use ::before for the decorative quote mark. Reset ALL shimmer properties
+ * so the quote stays static and the shimmer animation does not apply.
+ */
 .testimonial-card::before {
+    /* Override shimmer animation entirely */
+    animation: none;
+    /* Restore as static decorative quote mark */
     content: '"';
     position: absolute;
     top: 0;
     left: var(--space-24);
+    width: auto;
+    height: auto;
+    background: none;
     font-family: var(--ff-serif);
     font-size: 8rem;
     line-height: 1;
     color: rgba(255,255,255,0.05);
     z-index: 0;
+    pointer-events: none;
 }
 .testimonial-quote {
     font-size: var(--fs-md);
@@ -1170,35 +1281,79 @@
 
 /* --- Next Steps Module --- */
 .next-steps-module {
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-    background: rgba(255, 255, 255, 0.02);
-    border: var(--border-subtle);
-    border-radius: 24px;
-    padding: var(--space-32);
-}
-
-.next-step-item {
+    max-width: 100%;
+    border-top: var(--border-subtle);
+    padding-top: var(--space-32);
     display: flex;
-    align-items: flex-start;
-    gap: var(--space-16);
-}
-
-.step-indicator {
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
-    border-radius: 50%;
-    background: rgba(129, 140, 248, 0.15);
-    color: var(--color-accent-primary);
-    font-size: var(--fs-xs);
-    font-weight: 800;
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(129, 140, 248, 0.3);
-    margin-top: 2px;
+    gap: var(--space-24);
+}
+
+/* The horizontal flow row containing items + arrow dividers */
+.next-step-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-16);
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .next-step-flow {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0;
+    }
+}
+
+/* Each step item — centered, stacked icon + title + description */
+.next-step-flow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-8);
+    flex: 1;
+    padding: 0 var(--space-16);
+}
+
+.next-step-flow-item strong {
+    font-size: var(--fs-sm);
+    line-height: 1.3;
+    display: block;
+}
+
+.next-step-flow-item p {
+    font-size: var(--fs-xs);
+    line-height: 1.55;
+    margin: 0;
+    color: var(--color-text-muted);
+}
+
+/* The ✦ icon — matches proof strip accent color */
+.next-step-icon {
+    color: var(--color-accent-primary);
+    font-size: 0.6rem;
+    display: block;
+    margin-bottom: var(--space-4);
+}
+
+/* Arrow divider between steps — hidden on mobile */
+.next-step-flow-divider {
+    display: none;
+    color: rgba(255, 255, 255, 0.15);
+    font-size: var(--fs-lg);
+    flex-shrink: 0;
+    padding-top: var(--space-8);
+    user-select: none;
+}
+
+@media (min-width: 600px) {
+    .next-step-flow-divider {
+        display: block;
+    }
 }
 
 .modal-close:hover {

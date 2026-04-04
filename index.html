@@ -162,21 +162,44 @@
                 </div>
                 <div class="grid-3-cols fade-element mt-48">
                     <div class="stuck-card">
-                        <div class="stuck-icon">👥</div>
-                        <h4 class="text-white mb-8">Relying on Referrals</h4>
-                        <p>Unpredictable, outside your control, drying up with zero warning.</p>
+                        <div class="stuck-icon">
+                            <!-- Two users: second person fades ghost-like → unpredictability -->
+                            <svg class="stuck-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                                <g class="stuck-ghost-user">
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                    <path d="M21 21v-2a4 4 0 0 0-3-3.87"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <h4 class="stuck-heading">Relying on Referrals</h4>
+                        <p class="stuck-body">Unpredictable, outside your control, drying up with zero warning.</p>
                     </div>
                     <div class="stuck-card">
-                        <div class="stuck-icon">📨</div>
-                        <h4 class="text-white mb-8">Cold Random Outreach</h4>
-                        <p>Time-consuming, low-conversion, and feels like fishing in the dark.</p>
+                        <div class="stuck-icon">
+                            <!-- Envelope shakes repeatedly → futile cold outreach -->
+                            <svg class="stuck-svg stuck-anim-shake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            </svg>
+                        </div>
+                        <h4 class="stuck-heading">Cold Random Outreach</h4>
+                        <p class="stuck-body">Time-consuming, low-conversion, and feels like fishing in the dark.</p>
                     </div>
                     <div class="stuck-card">
-                        <div class="stuck-icon">⚡</div>
-                        <h4 class="text-white mb-8">Inconsistent Efforts</h4>
-                        <p>Good months give false confidence, while slower months cause panic.</p>
+                        <div class="stuck-icon">
+                            <!-- Erratic activity line draws itself → inconsistent pattern -->
+                            <svg class="stuck-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" class="stuck-draw-line"/>
+                            </svg>
+                        </div>
+                        <h4 class="stuck-heading">Inconsistent Efforts</h4>
+                        <p class="stuck-body">Good months give false confidence, while slower months cause panic.</p>
                     </div>
                 </div>
+
+
                 <p class="text-center fade-element mt-48"
                     style="font-size: var(--fs-md); color: var(--color-accent-primary); font-weight: 700;">The fix isn't
                     working harder. It's installing the right system.</p>
@@ -507,31 +530,28 @@
                         style="font-size: var(--fs-md); max-width: 420px; margin-left: auto; margin-right: auto;">No
                         more scattered efforts. One clear call to claim your predictable pipeline.</p>
                     <a href="#booking" class="btn btn-primary btn-lg booking-modal-trigger">Book Your Free Strategy Call</a>
-                    <p class="text-sm text-muted mt-16" style="opacity: 0.9;">No pressure. Just clarity on your exact
-                        next steps.</p>
+                    <p class="text-sm text-muted mt-16" style="opacity: 0.9;">No pressure. Just clarity on your exact next steps.</p>
 
                     <!-- What happens after booking -->
-                    <div class="next-steps-module mt-48 text-left">
-                        <h4 class="text-white mb-32 text-center" style="font-size: var(--fs-lg);">What happens after you book?</h4>
-                        <div class="next-step-item">
-                            <div class="step-indicator">1</div>
-                            <div>
-                                <strong class="text-white">Fill out a quick pulse-check</strong>
-                                <p class="text-muted text-sm m-0">A 2-minute form to help me understand your current bottleneck.</p>
+                    <div class="next-steps-module">
+                        <div class="uppercase-tracked" style="grid-column: 1 / -1; text-align: center;">What happens next</div>
+                        <div class="next-step-flow">
+                            <div class="next-step-flow-item">
+                                <span class="next-step-icon">✦</span>
+                                <strong class="text-white">Fill out a pulse-check</strong>
+                                <p class="text-muted text-sm m-0">A 2-min form so I know where your pipeline is breaking.</p>
                             </div>
-                        </div>
-                        <div class="next-step-item mt-24">
-                            <div class="step-indicator">2</div>
-                            <div>
-                                <strong class="text-white">We map your transition on the call</strong>
-                                <p class="text-muted text-sm m-0">We’ll look at your pipeline and outline the exact inbound framework to implement.</p>
+                            <div class="next-step-flow-divider">→</div>
+                            <div class="next-step-flow-item">
+                                <span class="next-step-icon">✦</span>
+                                <strong class="text-white">We map your path live</strong>
+                                <p class="text-muted text-sm m-0">We audit your pipeline and outline the exact fix together.</p>
                             </div>
-                        </div>
-                        <div class="next-step-item mt-24">
-                            <div class="step-indicator">3</div>
-                            <div>
-                                <strong class="text-white">You get the roadmap (no pressure)</strong>
-                                <p class="text-muted text-sm m-0">If we're a fit to work together, we'll discuss it. If not, you still walk away with a custom action plan.</p>
+                            <div class="next-step-flow-divider">→</div>
+                            <div class="next-step-flow-item">
+                                <span class="next-step-icon">✦</span>
+                                <strong class="text-white">You walk away with clarity</strong>
+                                <p class="text-muted text-sm m-0">A clear roadmap is yours to keep — no strings attached.</p>
                             </div>
                         </div>
                     </div>
