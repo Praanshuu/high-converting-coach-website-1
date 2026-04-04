@@ -12,6 +12,7 @@
         padding: var(--space-64) 0;
     }
 }
+
 @media (min-width: 1024px) {
     .section {
         padding: var(--space-96) 0;
@@ -27,14 +28,16 @@
     position: relative;
     z-index: 10;
 }
+
 .proof-strip-inner {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;   
+    align-items: flex-start;
     gap: var(--space-16);
-    text-align: left;          
+    text-align: left;
     padding: 0 var(--space-16);
 }
+
 @media (min-width: 768px) {
     .proof-strip-inner {
         flex-direction: row;
@@ -43,6 +46,7 @@
         text-align: left;
     }
 }
+
 .proof-strip-item {
     display: flex;
     align-items: start;
@@ -52,33 +56,41 @@
     padding: var(--space-8) var(--space-16);
     text-align: left;
 }
+
 @media (min-width: 768px) {
     .proof-strip-item {
         padding: 0 var(--space-32);
     }
 }
+
 .proof-strip-icon {
     color: var(--color-accent-primary);
     font-size: 0.6rem;
     flex-shrink: 0;
-    margin-top: 4px; /* visually align with first line */
+    margin-top: 4px;
+    /* visually align with first line */
 }
+
 .proof-strip-divider {
     display: none;
     width: 1px;
     height: 24px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
 }
+
 @media (min-width: 768px) {
-    .proof-strip-divider { display: block; }
+    .proof-strip-divider {
+        display: block;
+    }
 }
 
 /* --- Stuck Cards (Why They're Stuck) --- */
 .stuck-card {
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
     border: var(--border-subtle);
-    border-radius: 24px; /* Matches outcome-card radius */
+    border-radius: 24px;
+    /* Matches outcome-card radius */
     padding: var(--space-24) var(--space-16);
     min-height: 220px;
     text-align: center;
@@ -97,14 +109,18 @@
 
 .stuck-card:hover {
     border-color: rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.05); /* Added subtle background shift */
-    transform: translateY(-4px); /* Consistent hover lift */
+    background: rgba(255, 255, 255, 0.05);
+    /* Added subtle background shift */
+    transform: translateY(-4px);
+    /* Consistent hover lift */
 }
 
 .stuck-icon {
-    width: 64px; /* Matched to outcome icon-wrapper size */
+    width: 64px;
+    /* Matched to outcome icon-wrapper size */
     height: 64px;
-    margin-bottom: var(--space-24); /* More generous spacing like outcome */
+    margin-bottom: var(--space-24);
+    /* More generous spacing like outcome */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,9 +151,18 @@
     animation: stuck-ghost 3.2s ease-in-out infinite;
     transform-origin: center;
 }
+
 @keyframes stuck-ghost {
-    0%, 100% { opacity: 1; }
-    40%, 60% { opacity: 0.08; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    40%,
+    60% {
+        opacity: 0.08;
+    }
 }
 
 /* 2. Envelope shake — futile cold outreach */
@@ -146,14 +171,38 @@
     transform-origin: center;
     transform-box: fill-box;
 }
+
 @keyframes stuck-shake {
-    0%, 55%, 100% { transform: translateX(0) rotate(0deg); }
-    60%  { transform: translateX(-4px) rotate(-5deg); }
-    65%  { transform: translateX( 4px) rotate( 5deg); }
-    70%  { transform: translateX(-3px) rotate(-3deg); }
-    75%  { transform: translateX( 3px) rotate( 3deg); }
-    80%  { transform: translateX(-1px) rotate(-1deg); }
-    85%  { transform: translateX(0)    rotate(0deg); }
+
+    0%,
+    55%,
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+
+    60% {
+        transform: translateX(-4px) rotate(-5deg);
+    }
+
+    65% {
+        transform: translateX(4px) rotate(5deg);
+    }
+
+    70% {
+        transform: translateX(-3px) rotate(-3deg);
+    }
+
+    75% {
+        transform: translateX(3px) rotate(3deg);
+    }
+
+    80% {
+        transform: translateX(-1px) rotate(-1deg);
+    }
+
+    85% {
+        transform: translateX(0) rotate(0deg);
+    }
 }
 
 /* 3. Activity line self-draws then resets — erratic inconsistency */
@@ -162,25 +211,46 @@
     stroke-dashoffset: 70;
     animation: stuck-draw 3s ease-in-out infinite;
 }
+
 @keyframes stuck-draw {
-    0%  { stroke-dashoffset: 70; opacity: 0; }
-    8%  { opacity: 1; }
-    65% { stroke-dashoffset: 0; opacity: 1; }
-    85% { stroke-dashoffset: 0; opacity: 0.2; }
-    100%{ stroke-dashoffset: 0; opacity: 0; }
+    0% {
+        stroke-dashoffset: 70;
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    65% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+
+    85% {
+        stroke-dashoffset: 0;
+        opacity: 0.2;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+    }
 }
 
 /* Balanced text constraints for stuck cards — using outcome logic */
 .stuck-heading {
     color: var(--color-text);
     font-weight: 800;
-    font-size: var(--fs-md); /* Slightly larger for stuck cards */
+    font-size: var(--fs-md);
+    /* Slightly larger for stuck cards */
     margin-bottom: var(--space-8);
     line-height: 1.3;
     letter-spacing: -0.01em;
     text-align: center;
     text-wrap: balance;
-    min-height: 2.6em; /* Reserves exactly 2 lines */
+    min-height: 2.6em;
+    /* Reserves exactly 2 lines */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,7 +263,8 @@
     line-height: 1.6;
     text-align: center;
     text-wrap: balance;
-    min-height: 4.8em; /* Reserves exactly 3 lines */
+    min-height: 4.8em;
+    /* Reserves exactly 3 lines */
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -208,6 +279,7 @@
     max-width: 800px;
     margin: 0 auto;
 }
+
 .timeline::before {
     content: '';
     position: absolute;
@@ -215,24 +287,31 @@
     top: 0;
     bottom: 0;
     width: 1px;
-    background: linear-gradient(to bottom, var(--color-accent-primary), rgba(129,140,248,0.3));
+    background: linear-gradient(to bottom, var(--color-accent-primary), rgba(129, 140, 248, 0.3));
 }
+
 /* Solid timeline variant — use for programs with defined duration */
 .timeline-solid::before {
-    background: rgba(129,140,248,0.3);
+    background: rgba(129, 140, 248, 0.3);
 }
+
 @media (min-width: 768px) {
-    .timeline::before { left: 100px; }
+    .timeline::before {
+        left: 100px;
+    }
 }
+
 .timeline-item {
     display: flex;
     gap: var(--space-32);
     padding-bottom: var(--space-48);
     position: relative;
 }
+
 .timeline-item:last-child {
     padding-bottom: 0;
 }
+
 .timeline-week {
     flex-shrink: 0;
     width: 68px;
@@ -246,6 +325,7 @@
     text-align: right;
     position: relative;
 }
+
 .timeline-week::after {
     content: '';
     position: absolute;
@@ -255,22 +335,175 @@
     height: 10px;
     border-radius: 50%;
     background: var(--color-accent-primary);
-    box-shadow: 0 0 12px rgba(129,140,248,0.6);
+    box-shadow: 0 0 12px rgba(129, 140, 248, 0.6);
 }
+
 @media (min-width: 768px) {
-    .timeline-week { width: 90px; }
-    .timeline-week::after { right: -28px; }
+    .timeline-week {
+        width: 90px;
+    }
+
+    .timeline-week::after {
+        right: -28px;
+    }
 }
+
 .timeline-card {
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
     border: var(--border-subtle);
     border-radius: 16px;
     padding: var(--space-24) var(--space-24);
     flex: 1;
     transition: border-color var(--transition-base);
 }
+
 .timeline-card:hover {
-    border-color: rgba(255,255,255,0.15);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Timeline Journey Overhaul --- */
+
+/* 1. Glowing Traveler */
+.timeline-traveler {
+    position: absolute;
+    left: 75px;
+    /* Precisely centered on the 1px line */
+    top: 0;
+    width: 3px;
+    /* Reduced from 9px for subtlety */
+    height: 64px;
+    background: linear-gradient(to bottom, transparent, var(--color-accent-primary), transparent);
+    filter: blur(1px) drop-shadow(0 0 5px var(--color-accent-primary));
+    /* Subtler glow */
+    z-index: 5;
+    animation: timeline-travel 8s linear infinite;
+    opacity: 0.45;
+    /* Reduced from 0.8 */
+}
+
+@media (min-width: 768px) {
+    .timeline-traveler {
+        left: 99px;
+    }
+}
+
+@keyframes timeline-travel {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    95% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+/* 2. Timeline Card Icons */
+.timeline-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-icon-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    color: var(--color-accent-primary);
+    opacity: 0.4;
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.timeline-card:hover .timeline-icon-container {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* 3. Phase Animations */
+
+/* Target Pulse (W1-2) */
+.anim-target circle {
+    transform-origin: center;
+    animation: target-pulse 3s ease-in-out infinite;
+}
+
+.anim-target circle:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+@keyframes target-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+/* Wave Pulse (W3-4) */
+.anim-waves path {
+    animation: wave-fade 2s ease-in-out infinite;
+    opacity: 0.2;
+}
+
+.anim-waves path:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.anim-waves path:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+@keyframes wave-fade {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Check Success (W5-6) */
+.anim-check polyline {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: check-draw 4s ease-in-out infinite;
+}
+
+@keyframes check-draw {
+    0% {
+        stroke-dashoffset: 50;
+        filter: none;
+    }
+
+    20%,
+    80% {
+        stroke-dashoffset: 0;
+        filter: drop-shadow(0 0 5px var(--color-accent-primary));
+    }
+
+    100% {
+        stroke-dashoffset: -50;
+        filter: none;
+    }
 }
 
 
@@ -299,7 +532,8 @@
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: var(--border-subtle);
-    border-radius: 100px; /* Pill shape */
+    border-radius: 100px;
+    /* Pill shape */
     z-index: 100;
     transition: all var(--transition-base);
 }
@@ -361,7 +595,9 @@
 }
 
 @media (min-width: 768px) {
-    .main-nav { display: flex; }
+    .main-nav {
+        display: flex;
+    }
 }
 
 /* --- Buttons (Pill + Glow) --- */
@@ -371,7 +607,8 @@
     justify-content: center;
     padding: var(--space-12) var(--space-24);
     font-weight: 700;
-    border-radius: 100px; /* Full pill shape */
+    border-radius: 100px;
+    /* Full pill shape */
     cursor: pointer;
     text-align: center;
     border: none;
@@ -420,14 +657,22 @@
 }
 
 @keyframes btn-breathe {
-    0% { box-shadow: 0 0 16px rgba(79, 70, 229, 0.35); }
-    100% { box-shadow: 0 0 32px rgba(129, 140, 248, 0.65); }
+    0% {
+        box-shadow: 0 0 16px rgba(79, 70, 229, 0.35);
+    }
+
+    100% {
+        box-shadow: 0 0 32px rgba(129, 140, 248, 0.65);
+    }
 }
 
 .btn-primary::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(135deg, #a5b4fc, #818cf8);
     opacity: 0;
     transition: opacity var(--transition-base);
@@ -478,9 +723,13 @@
 .card::after {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border-radius: inherit;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02); /* Extra subtle inner shine */
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    /* Extra subtle inner shine */
     pointer-events: none;
 }
 
@@ -488,7 +737,7 @@
     border-color: rgba(255, 255, 255, 0.15);
     background: rgba(255, 255, 255, 0.05);
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* Shimmer sweep on glass cards — relay: only 1 card shines at a time */
@@ -505,12 +754,10 @@
     left: -60%;
     width: 60%;
     height: 100%;
-    background: linear-gradient(
-        105deg,
-        transparent 20%,
-        rgba(255, 255, 255, 0.028) 50%,
-        transparent 80%
-    );
+    background: linear-gradient(105deg,
+            transparent 20%,
+            rgba(255, 255, 255, 0.028) 50%,
+            transparent 80%);
     animation: card-shimmer 12s ease-in-out infinite;
     border-radius: inherit;
     pointer-events: none;
@@ -518,18 +765,47 @@
 }
 
 @keyframes card-shimmer {
-    0%   { left: -60%; opacity: 0; }
-    2%   { opacity: 1; }
-    25%  { left: 110%; opacity: 1; }
-    26%  { opacity: 0; left: 110%; }
-    100% { left: 110%; opacity: 0; }
+    0% {
+        left: -60%;
+        opacity: 0;
+    }
+
+    2% {
+        opacity: 1;
+    }
+
+    25% {
+        left: 110%;
+        opacity: 1;
+    }
+
+    26% {
+        opacity: 0;
+        left: 110%;
+    }
+
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
 }
 
 /* Relay: each card waits 3s after the previous finishes its sweep */
-.card:nth-child(1)::before { animation-delay: 0s; }
-.card:nth-child(2)::before { animation-delay: 3s; }
-.card:nth-child(3)::before { animation-delay: 6s; }
-.card:nth-child(4)::before { animation-delay: 9s; }
+.card:nth-child(1)::before {
+    animation-delay: 0s;
+}
+
+.card:nth-child(2)::before {
+    animation-delay: 3s;
+}
+
+.card:nth-child(3)::before {
+    animation-delay: 6s;
+}
+
+.card:nth-child(4)::before {
+    animation-delay: 9s;
+}
 
 /* Badge / Pill Label */
 .badge {
@@ -553,12 +829,15 @@
     position: relative;
     padding-top: var(--space-128);
     padding-bottom: var(--space-64);
-    min-height: 100svh;
+    height: 100vh;
+    /* Strictly 100vh as requested */
+    min-height: 700px;
+    /* Fallback for very short viewports */
     display: flex;
     align-items: center;
     justify-content: center;
     background-image:
-        linear-gradient(to bottom, rgba(3,0,20,0.55) 0%, rgba(3,0,20,0.8) 70%, rgba(3,0,20,1) 100%),
+        linear-gradient(to bottom, rgba(3, 0, 20, 0.55) 0%, rgba(3, 0, 20, 0.8) 70%, rgba(3, 0, 20, 1) 100%),
         url('../images/hero-bg.png');
     background-size: cover;
     background-position: center top;
@@ -569,7 +848,8 @@
 .scroll-arrow {
     display: block;
     position: absolute;
-    bottom: var(--space-48);
+    bottom: 2rem;
+    /* Cleanly at the bottom of the hero */
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -600,16 +880,24 @@
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateX(-50%) translateY(0);
     }
+
     40% {
         transform: translateX(-50%) translateY(-10px);
     }
+
     60% {
         transform: translateX(-50%) translateY(-4px);
     }
 }
+
 .hero-title {
     margin-bottom: var(--space-32);
     max-width: 900px;
@@ -627,20 +915,26 @@
 .bullet-list {
     list-style: none;
     margin-top: var(--space-32);
-    max-width: 480px; /* Limits width so it doesn't feel stretched */
-    margin-inline: auto; /* Centers the list block itself */
-    padding-left: var(--space-12); /* Optical adjustment for bullets */
+    max-width: 480px;
+    /* Limits width so it doesn't feel stretched */
+    margin-inline: auto;
+    /* Centers the list block itself */
+    padding-left: var(--space-12);
+    /* Optical adjustment for bullets */
 }
+
 .bullet-list li {
     position: relative;
     padding-left: var(--space-48);
-    margin-bottom: var(--space-16); /* Slightly tighter for better block rhythm */
+    margin-bottom: var(--space-16);
+    /* Slightly tighter for better block rhythm */
     color: var(--color-text-dark);
     font-size: var(--fs-md);
     line-height: 1.5;
     display: flex;
     align-items: flex-start;
 }
+
 .bullet-list li::before {
     content: "";
     position: absolute;
@@ -657,12 +951,14 @@
     list-style: none;
     margin-top: var(--space-24);
 }
+
 .check-list li {
     position: relative;
     padding-left: var(--space-48);
     margin-bottom: var(--space-16);
     color: var(--color-text-dark);
 }
+
 .check-list li::before {
     content: "";
     position: absolute;
@@ -681,11 +977,81 @@
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-16);
 }
+
 @media (min-width: 768px) {
-    .outcome-grid { gap: var(--space-24); }
+    .outcome-grid {
+        gap: var(--space-24);
+    }
 }
+
 @media (min-width: 1024px) {
-    .outcome-grid { grid-template-columns: repeat(4, 1fr); gap: var(--space-24); }
+    .outcome-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-24);
+    }
+}
+
+/* --- Proof Strip --- */
+.proof-strip {
+    background: rgba(255, 255, 255, 0.03);
+    border-top: var(--border-subtle);
+    border-bottom: var(--border-subtle);
+    padding: var(--space-24) 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* Reduce horizontal container padding on mobile for this specific section */
+.proof-strip .container {
+    padding: 0 var(--space-8);
+}
+
+@media (min-width: 768px) {
+    .proof-strip {
+        padding: var(--space-32) 0;
+    }
+
+    .proof-strip .container {
+        padding: 0 var(--space-16);
+    }
+}
+
+.proof-strip-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-16);
+}
+
+.proof-strip-item {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    /* Rule 6: Proximity - 16px */
+    font-size: 0.75rem;
+    /* Standardizing labels */
+    color: var(--color-text-muted);
+    opacity: 0.75;
+    /* Rule 5.1: De-emphasize labels */
+    font-weight: 500;
+    flex: 1;
+    min-width: 200px;
+    justify-content: flex-start;
+    text-align: left;
+    /* Rule 4.2: Left-aligned typography */
+    line-height: 1.45;
+}
+
+.proof-strip-item strong {
+    display: block;
+    font-size: 0.875rem;
+    /* Rule 5: Emphasis on Results */
+    color: var(--color-text);
+    opacity: 1;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-top: 2px;
 }
 
 .outcome-card {
@@ -697,21 +1063,26 @@
     padding: var(--space-24) var(--space-16);
     min-height: 220px;
 }
+
 @media (min-width: 768px) {
     .outcome-card {
         padding: var(--space-32) var(--space-24);
         min-height: 260px;
     }
 }
+
 .outcome-card p:last-child {
     margin: 0;
 }
+
 .outcome-card:hover {
     border-color: rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.05); /* Match stuck styles for cohesion */
+    background: rgba(255, 255, 255, 0.05);
+    /* Match stuck styles for cohesion */
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
+
 /* Equalized outcome card text - same font size and weight across all cards */
 .outcome-heading {
     color: var(--color-text);
@@ -722,11 +1093,13 @@
     letter-spacing: -0.01em;
     text-align: center;
     text-wrap: balance;
-    min-height: 2.6em; /* Reserves exactly 2 lines (1.3 * 2) */
+    min-height: 2.6em;
+    /* Reserves exactly 2 lines (1.3 * 2) */
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .outcome-body {
     font-size: var(--fs-xs);
     color: var(--color-text-muted);
@@ -734,8 +1107,10 @@
     line-height: 1.6;
     text-align: center;
     text-wrap: balance;
-    min-height: 4.8em; /* Reserves exactly 3 lines (1.6 * 3) */
+    min-height: 4.8em;
+    /* Reserves exactly 3 lines (1.6 * 3) */
 }
+
 .outcome-card .icon-wrapper {
     width: 64px;
     height: 64px;
@@ -769,12 +1144,28 @@
     animation: outcome-pulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     transform-origin: center;
 }
-.outcome-pulse-circles circle:nth-child(2) { animation-delay: 0.5s; }
-.outcome-pulse-circles circle:nth-child(3) { animation-delay: 1s; }
+
+.outcome-pulse-circles circle:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.outcome-pulse-circles circle:nth-child(3) {
+    animation-delay: 1s;
+}
 
 @keyframes outcome-pulse {
-    0%, 100% { transform: scale(1); opacity: 0.6; }
-    50% { transform: scale(1.1); opacity: 1; stroke-width: 2.5; }
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+        stroke-width: 2.5;
+    }
 }
 
 /* 2. Scroll for Calendar/Currency */
@@ -783,19 +1174,41 @@
     stroke-dashoffset: 60;
     animation: outcome-draw 4s ease-in-out infinite;
 }
+
 @keyframes outcome-draw {
-    0% { stroke-dashoffset: 60; opacity: 0.2; }
-    30%, 70% { stroke-dashoffset: 0; opacity: 1; }
-    100% { stroke-dashoffset: -60; opacity: 0.2; }
+    0% {
+        stroke-dashoffset: 60;
+        opacity: 0.2;
+    }
+
+    30%,
+    70% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+
+    100% {
+        stroke-dashoffset: -60;
+        opacity: 0.2;
+    }
 }
 
 /* 3. Bounce for Close Rate/Flashbolt */
 .outcome-anim-bolt {
     animation: outcome-bolt 2s ease-in-out infinite alternate;
 }
+
 @keyframes outcome-bolt {
-    0% { transform: scale(0.95) translateY(1px); opacity: 0.8; }
-    100% { transform: scale(1.05) translateY(-1px); opacity: 1; filter: drop-shadow(0 0 4px var(--color-accent-primary)); }
+    0% {
+        transform: scale(0.95) translateY(1px);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.05) translateY(-1px);
+        opacity: 1;
+        filter: drop-shadow(0 0 4px var(--color-accent-primary));
+    }
 }
 
 /* 4. Shield Breathing for Focus */
@@ -803,14 +1216,30 @@
     animation: outcome-shield 4s ease-in-out infinite;
     transform-origin: center;
 }
+
 @keyframes outcome-shield {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.08); opacity: 1; stroke-width: 2.2; }
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+        stroke-width: 2.2;
+    }
 }
 
 @keyframes icon-float {
-    0% { transform: translateY(1.5px); }
-    100% { transform: translateY(-1.5px); }
+    0% {
+        transform: translateY(1.5px);
+    }
+
+    100% {
+        transform: translateY(-1.5px);
+    }
 }
 
 /* Step Card Example Text */
@@ -827,11 +1256,13 @@
     font-family: var(--ff-primary);
     margin-bottom: 0;
 }
+
 .step-eg-label {
     color: var(--color-accent-primary);
     font-weight: 700;
     margin-right: 4px;
 }
+
 /* Step card title - consistent spacing without inline styles */
 .step-card-title {
     color: var(--color-text);
@@ -846,8 +1277,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem; /* Exactly 16px for Rule 2: Proximity */
-    padding: 0.75rem 1.25rem; /* 12px 20px for Rule 4.1: Grid Spacing */
+    gap: 1rem;
+    /* Exactly 16px for Rule 2: Proximity */
+    padding: 0.75rem 1.25rem;
+    /* 12px 20px for Rule 4.1: Grid Spacing */
     border: var(--border-bright);
     border-radius: 100px;
     background: rgba(255, 255, 255, 0.03);
@@ -855,17 +1288,21 @@
     text-decoration: none;
     width: 100%;
 }
+
 @media (min-width: 600px) {
     .video-placeholder {
         width: auto;
         display: inline-flex;
-        padding: 0.75rem 1.75rem; /* Slightly wider on desktop for premium feel */
+        padding: 0.75rem 1.75rem;
+        /* Slightly wider on desktop for premium feel */
     }
 }
+
 .video-placeholder:hover {
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(129, 140, 248, 0.5);
 }
+
 .video-play-btn {
     width: 40px;
     height: 40px;
@@ -896,58 +1333,73 @@
         transform: scale(0.8);
         opacity: 0.8;
     }
+
     100% {
         transform: scale(1.6);
         opacity: 0;
     }
 }
+
 .video_box {
     display: flex;
-    justify-content: center; /* Rule 7: Center on mobile */
+    justify-content: center;
+    /* Rule 7: Center on mobile */
     align-items: center;
     padding: 0.5rem 0;
 }
+
 @media (min-width: 768px) {
     .video_box {
-        justify-content: flex-start; /* Rule 7: Align left on desktop to match card text */
+        justify-content: flex-start;
+        /* Rule 7: Align left on desktop to match card text */
     }
 }
+
 /* Video placeholder text block */
 .video-placeholder-text {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem; /* 4px for Rule 4.1 */
+    gap: 0.25rem;
+    /* 4px for Rule 4.1 */
     text-align: center;
     max-width: none;
 }
+
 @media (min-width: 600px) {
     .video-placeholder-text {
         text-align: left;
     }
 }
+
 .video-title {
     font-size: var(--fs-sm);
     font-weight: 700;
     color: var(--color-text);
     line-height: 1.3;
-    white-space: nowrap; /* Prevent title splitting */
+    white-space: nowrap;
+    /* Prevent title splitting */
 }
+
 @media (max-width: 480px) {
     .video-title {
-        font-size: 0.8rem; /* Scale down slightly on very small devices */
+        font-size: 0.8rem;
+        /* Scale down slightly on very small devices */
     }
 }
+
 .video-meta {
     font-size: var(--fs-xs);
     color: var(--color-text-muted);
     line-height: 1.3;
     text-wrap: balance;
 }
+
 .authority-image-wrapper {
     position: relative;
     border-radius: 24px;
     padding: 1px;
-    background: var(--gradient-primary); /* Gradient border wrapper */
+    background: var(--gradient-primary);
+    /* Gradient border wrapper */
     overflow: hidden;
 }
 
@@ -958,6 +1410,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 @media (min-width: 768px) {
     #authority-content {
         padding: var(--space-48);
@@ -973,24 +1426,30 @@
     aspect-ratio: 4/5;
     border-radius: 23px;
     display: block;
-    filter: grayscale(100%) contrast(1.1) brightness(0.85); /* Moody dark-space filter */
+    filter: grayscale(100%) contrast(1.1) brightness(0.85);
+    /* Moody dark-space filter */
     transition: filter var(--transition-slow);
 }
+
 .coach-image:hover {
-    filter: grayscale(0%) contrast(1.05) brightness(1); /* Reveal full color */
+    filter: grayscale(0%) contrast(1.05) brightness(1);
+    /* Reveal full color */
 }
 
 /* System Cards (Bento style) */
 .step-card {
     /* overflow: hidden inherited from .card keeps shimmer clipped inside bounds */
-    padding-top: var(--space-64); /* extra room so the pill sits visually at the top */
+    padding-top: var(--space-64);
+    /* extra room so the pill sits visually at the top */
     display: flex;
     flex-direction: column;
     height: 100%;
 }
+
 .step-number {
     position: absolute;
-    top: 24px; /* inside card — no overflow needed */
+    top: 24px;
+    /* inside card — no overflow needed */
     left: var(--space-32);
     padding: var(--space-8) var(--space-24);
     background: var(--color-bg);
@@ -1005,9 +1464,20 @@
 }
 
 /* Step-card shimmer relay — 3 cards, 9s cycle, 3s sweep each — seamless with no gap */
-.step-card:nth-child(1)::before { animation-delay: 0s;  animation-duration: 9s; }
-.step-card:nth-child(2)::before { animation-delay: 3s;  animation-duration: 9s; }
-.step-card:nth-child(3)::before { animation-delay: 6s;  animation-duration: 9s; }
+.step-card:nth-child(1)::before {
+    animation-delay: 0s;
+    animation-duration: 9s;
+}
+
+.step-card:nth-child(2)::before {
+    animation-delay: 3s;
+    animation-duration: 9s;
+}
+
+.step-card:nth-child(3)::before {
+    animation-delay: 6s;
+    animation-duration: 9s;
+}
 
 /* Offer */
 .offer-panel {
@@ -1015,16 +1485,19 @@
     overflow: hidden;
     border: var(--border-bright);
 }
+
 .offer-grid {
     display: flex;
     flex-direction: column;
 }
+
 @media (min-width: 768px) {
     .offer-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
 }
+
 .offer-content {
     padding: var(--space-32) var(--space-24);
     text-align: center;
@@ -1032,10 +1505,12 @@
     flex-direction: column;
     align-items: center;
 }
+
 .offer-content .check-list {
     text-align: left;
     display: inline-block;
 }
+
 @media (min-width: 768px) {
     .offer-content {
         padding: var(--space-48);
@@ -1043,17 +1518,20 @@
         align-items: flex-start;
     }
 }
+
 @media (min-width: 1024px) {
     .offer-content {
         padding: var(--space-64);
     }
 }
+
 .offer-box {
     text-align: center;
     padding: var(--space-32) var(--space-24);
-    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
     border-top: var(--border-bright);
 }
+
 @media (min-width: 768px) {
     .offer-box {
         padding: var(--space-48) var(--space-32);
@@ -1061,6 +1539,7 @@
         border-left: var(--border-bright);
     }
 }
+
 @media (min-width: 1024px) {
     .offer-box {
         padding: var(--space-64) var(--space-48);
@@ -1071,6 +1550,7 @@
 .testimonial-card {
     position: relative;
 }
+
 /*
  * .card::before runs the shimmer animation — but testimonial cards
  * use ::before for the decorative quote mark. Reset ALL shimmer properties
@@ -1090,10 +1570,11 @@
     font-family: var(--ff-serif);
     font-size: 8rem;
     line-height: 1;
-    color: rgba(255,255,255,0.05);
+    color: rgba(255, 255, 255, 0.05);
     z-index: 0;
     pointer-events: none;
 }
+
 .testimonial-quote {
     font-size: var(--fs-md);
     color: var(--color-text-dark);
@@ -1101,6 +1582,7 @@
     position: relative;
     z-index: 1;
 }
+
 .testimonial-author {
     display: flex;
     align-items: center;
@@ -1108,6 +1590,7 @@
     position: relative;
     z-index: 1;
 }
+
 /* Real photo avatar — always a perfect circle */
 .author-avatar-photo {
     width: 56px;
@@ -1119,6 +1602,7 @@
     border: var(--border-bright);
     flex-shrink: 0;
 }
+
 .author-avatar-photo img {
     width: 100%;
     height: 100%;
@@ -1126,10 +1610,12 @@
     object-position: center top;
     display: block;
 }
+
 .testimonial-author strong {
     color: var(--color-text);
     font-size: var(--fs-md);
 }
+
 .testimonial-author span {
     display: block;
     font-size: var(--fs-sm);
@@ -1141,9 +1627,11 @@
     max-width: 800px;
     margin: 0 auto;
 }
+
 .accordion-item {
     border-bottom: var(--border-subtle);
 }
+
 /* ---- FAQ accordion — font must match global Manrope style ---- */
 .accordion-header {
     width: 100%;
@@ -1163,31 +1651,38 @@
     text-align: left;
     transition: color var(--transition-fast);
 }
+
 @media (min-width: 768px) {
     .accordion-header {
         padding: var(--space-32) 0;
     }
 }
+
 .accordion-header:hover {
     color: var(--color-accent-primary);
 }
+
 .accordion-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--transition-slow);
 }
+
 .accordion-content p {
     padding-bottom: var(--space-24);
     color: var(--color-text-muted);
 }
+
 @media (min-width: 768px) {
     .accordion-content p {
         padding-bottom: var(--space-32);
     }
 }
+
 .accordion-item.active .accordion-content {
     max-height: 500px;
 }
+
 .accordion-item.active .accordion-header .icon {
     transform: rotate(45deg);
     color: var(--color-accent-primary);
@@ -1200,19 +1695,24 @@
     background: var(--color-bg);
     position: relative;
 }
+
 .site-footer::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(129,140,248,0.4), transparent);
+    background: linear-gradient(to right, transparent, rgba(129, 140, 248, 0.4), transparent);
 }
+
 .footer-links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: var(--space-24);
 }
+
 .footer-link {
     color: var(--color-text-muted);
     font-size: var(--fs-xs);
@@ -1221,9 +1721,11 @@
     letter-spacing: 0.1em;
     transition: color var(--transition-fast);
 }
+
 .footer-link:hover {
     color: var(--color-text);
 }
+
 /* Custom classes for specific sections to avoid inline styles */
 .cta-glass-panel {
     padding: var(--space-48) var(--space-24);
@@ -1232,22 +1734,26 @@
     overflow: hidden;
     border-radius: 32px;
 }
+
 /* Remove extra section padding below CTA so footer follows tightly */
 .section-cta-flush {
     padding-bottom: 0;
 }
+
 .cta-glass-panel::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(129,140,248,0.18) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(129, 140, 248, 0.18) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
 }
-.cta-glass-panel > * {
+
+.cta-glass-panel>* {
     position: relative;
     z-index: 1;
 }
+
 @media (min-width: 768px) {
     .cta-glass-panel {
         padding: var(--space-96) var(--space-64);
@@ -1258,6 +1764,7 @@
 .hero-btns {
     flex-direction: column;
 }
+
 @media (min-width: 768px) {
     .hero-btns {
         flex-direction: row;
@@ -1269,6 +1776,7 @@
     justify-content: center;
     gap: var(--space-32);
 }
+
 .footer-nav a {
     color: var(--color-text-muted);
     font-size: var(--fs-sm);
@@ -1276,6 +1784,7 @@
     letter-spacing: 0.1em;
     font-weight: 700;
 }
+
 .footer-nav a:hover {
     color: var(--color-text);
 }
@@ -1420,7 +1929,8 @@
 
 .modal-video-wrapper {
     width: 100%;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    padding-top: 56.25%;
+    /* 16:9 Aspect Ratio */
     position: relative;
     border-radius: 23px;
     overflow: hidden;
