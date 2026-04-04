@@ -627,14 +627,19 @@
 .bullet-list {
     list-style: none;
     margin-top: var(--space-32);
+    max-width: 480px; /* Limits width so it doesn't feel stretched */
+    margin-inline: auto; /* Centers the list block itself */
+    padding-left: var(--space-12); /* Optical adjustment for bullets */
 }
 .bullet-list li {
     position: relative;
     padding-left: var(--space-48);
-    margin-bottom: var(--space-24);
+    margin-bottom: var(--space-16); /* Slightly tighter for better block rhythm */
     color: var(--color-text-dark);
     font-size: var(--fs-md);
     line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
 }
 .bullet-list li::before {
     content: "";
@@ -702,10 +707,10 @@
     margin: 0;
 }
 .outcome-card:hover {
-    transform: none;
-    background: rgba(255,255,255,0.02);
-    border-radius: 24px;
-    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05); /* Match stuck styles for cohesion */
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 /* Equalized outcome card text - same font size and weight across all cards */
 .outcome-heading {
@@ -753,27 +758,54 @@
 }
 
 .outcome-card .icon-wrapper svg {
-    animation: icon-float 4s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
-}
-.outcome-card:nth-child(even) .icon-wrapper svg {
-    animation-delay: 2s;
+    /* Base for the loop logic */
+    overflow: visible;
 }
 
-.outcome-card .icon-wrapper svg path,
-.outcome-card .icon-wrapper svg circle {
-    stroke-dasharray: 100;
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset 0.8s ease-in-out;
+/* --- Outcome Icon Loop Animations --- */
+
+/* 1. Pulse for Target/Leads */
+.outcome-pulse-circles circle {
+    animation: outcome-pulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    transform-origin: center;
+}
+.outcome-pulse-circles circle:nth-child(2) { animation-delay: 0.5s; }
+.outcome-pulse-circles circle:nth-child(3) { animation-delay: 1s; }
+
+@keyframes outcome-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.1); opacity: 1; stroke-width: 2.5; }
 }
 
-.outcome-card:hover .icon-wrapper svg path,
-.outcome-card:hover .icon-wrapper svg circle {
-    animation: svg-draw 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+/* 2. Scroll for Calendar/Currency */
+.outcome-anim-calendar path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: outcome-draw 4s ease-in-out infinite;
+}
+@keyframes outcome-draw {
+    0% { stroke-dashoffset: 60; opacity: 0.2; }
+    30%, 70% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: -60; opacity: 0.2; }
 }
 
-@keyframes svg-draw {
-    0% { stroke-dashoffset: -100; }
-    100% { stroke-dashoffset: 0; }
+/* 3. Bounce for Close Rate/Flashbolt */
+.outcome-anim-bolt {
+    animation: outcome-bolt 2s ease-in-out infinite alternate;
+}
+@keyframes outcome-bolt {
+    0% { transform: scale(0.95) translateY(1px); opacity: 0.8; }
+    100% { transform: scale(1.05) translateY(-1px); opacity: 1; filter: drop-shadow(0 0 4px var(--color-accent-primary)); }
+}
+
+/* 4. Shield Breathing for Focus */
+.outcome-anim-shield {
+    animation: outcome-shield 4s ease-in-out infinite;
+    transform-origin: center;
+}
+@keyframes outcome-shield {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 1; stroke-width: 2.2; }
 }
 
 @keyframes icon-float {
@@ -811,15 +843,24 @@
 
 /* Video Placeholder */
 .video-placeholder {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: var(--space-16);
-    padding: var(--space-12) var(--space-20);
+    justify-content: center;
+    gap: 1rem; /* Exactly 16px for Rule 2: Proximity */
+    padding: 0.75rem 1.25rem; /* 12px 20px for Rule 4.1: Grid Spacing */
     border: var(--border-bright);
     border-radius: 100px;
     background: rgba(255, 255, 255, 0.03);
-    transition: background var(--transition-base), border-color var(--transition-base);
+    transition: all var(--transition-base);
     text-decoration: none;
+    width: 100%;
+}
+@media (min-width: 600px) {
+    .video-placeholder {
+        width: auto;
+        display: inline-flex;
+        padding: 0.75rem 1.75rem; /* Slightly wider on desktop for premium feel */
+    }
 }
 .video-placeholder:hover {
     background: rgba(255, 255, 255, 0.06);
@@ -862,23 +903,39 @@
 }
 .video_box {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Rule 7: Center on mobile */
     align-items: center;
-    padding: var(--space-8) 0;
+    padding: 0.5rem 0;
+}
+@media (min-width: 768px) {
+    .video_box {
+        justify-content: flex-start; /* Rule 7: Align left on desktop to match card text */
+    }
 }
 /* Video placeholder text block */
 .video-placeholder-text {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    text-align: left;
+    gap: 0.25rem; /* 4px for Rule 4.1 */
+    text-align: center;
+    max-width: none;
+}
+@media (min-width: 600px) {
+    .video-placeholder-text {
+        text-align: left;
+    }
 }
 .video-title {
     font-size: var(--fs-sm);
     font-weight: 700;
     color: var(--color-text);
     line-height: 1.3;
-    text-wrap: balance;
+    white-space: nowrap; /* Prevent title splitting */
+}
+@media (max-width: 480px) {
+    .video-title {
+        font-size: 0.8rem; /* Scale down slightly on very small devices */
+    }
 }
 .video-meta {
     font-size: var(--fs-xs);
